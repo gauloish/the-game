@@ -13,8 +13,8 @@ from .functions import (
     updateScreenControls,
     updateScreenCount,
     checkEventsLead,
-    keydownEventLead,
-    keyupEventLead,
+    # keydownEventLead,
+    # keyupEventLead,
     updateScreenLead,
     updateEnd,
     gameover,
@@ -23,9 +23,10 @@ from .functions import (
 from .settings import Settings
 from .canvas import Background, Initial, Options, Ships, Level, Controls, Count, End
 from .ship import Ship
-from .bullets import Bullet
-from .life import Life
 from .enemies import Pawn, Knight, Pishop
+
+# from .bullets import Bullet
+# from .life import Life
 
 from random import randint
 
