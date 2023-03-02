@@ -17,10 +17,10 @@ cores_knight = {
 }
 
 cores_pishop = {
-    0: getPath("images/enemies/pishop/pishop_blue.png"),
-    1: getPath("images/enemies/pishop/pishop_green.png"),
-    2: getPath("images/enemies/pishop/pishop_pink.png"),
-    3: getPath("images/enemies/pishop/pishop_purple.png"),
+    0: getPath("images/enemies/bishop/bishop_blue.png"),
+    1: getPath("images/enemies/bishop/bishop_green.png"),
+    2: getPath("images/enemies/bishop/bishop_pink.png"),
+    3: getPath("images/enemies/bishop/bishop_purple.png"),
 }
 
 
