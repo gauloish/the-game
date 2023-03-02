@@ -40,7 +40,7 @@ def run():
 
     sky = Background(screen)
     inic = Initial(screen)
-    opt = Options(screen)
+    options = Options(screen)
     ships = Ships(screen)
     level = Level(screen)
     control = Controls(screen)
@@ -61,12 +61,12 @@ def run():
             elif inic.val == 1:
                 # Options Screen
                 while True:
-                    checkEventsOptions(opt, sky)
-                    updateScreenOptions(settings, screen, sky, opt)
+                    checkEventsOptions(options, sky)
+                    updateScreenOptions(settings, screen, sky, options)
 
-                    if opt.val == 0:
-                        opt.state = 0
-                        opt.val = -1
+                    if options.val == 0:
+                        options.state = 0
+                        options.val = -1
 
                         # Ship Choose
                         while True:
@@ -77,9 +77,9 @@ def run():
                                 ships.back = False
                                 break
 
-                    elif opt.val == 1:
-                        opt.state = 0
-                        opt.val = -1
+                    elif options.val == 1:
+                        options.state = 0
+                        options.val = -1
 
                         # Level Choose
                         while True:
@@ -90,9 +90,9 @@ def run():
                                 level.back = False
                                 break
 
-                    elif opt.val == 2:
-                        opt.state = 0
-                        opt.val = -1
+                    elif options.val == 2:
+                        options.state = 0
+                        options.val = -1
 
                         # Controls Visualizer
                         while True:
@@ -103,9 +103,9 @@ def run():
                                 control.back = False
                                 break
 
-                    elif opt.val == 3:
-                        opt.state = 0
-                        opt.val = -1
+                    elif options.val == 3:
+                        options.state = 0
+                        options.val = -1
 
                         inic.state = 0
                         inic.val = -1
