@@ -33,10 +33,10 @@ from random import randint
 def run():
     pygame.init()
 
-    sett = Settings()
-    screen = pygame.display.set_mode((sett.width, sett.height))
+    settings = Settings()
+    screen = pygame.display.set_mode((settings.width, settings.height))
 
-    pygame.display.set_caption(sett.display)
+    pygame.display.set_caption(settings.display)
 
     sky = Background(screen)
     inic = Initial(screen)
@@ -47,14 +47,14 @@ def run():
     end = End(screen)
 
     while True:
-        sett.back[0], sett.back[1], sett.back[2] = 200, 200, 200
+        settings.back[0], settings.back[1], settings.back[2] = 200, 200, 200
 
         sky.on = True
 
         # Start Screen
         while True:
             checkEventsInitial(inic, sky)
-            updateScreenInitial(sett, screen, sky, inic)
+            updateScreenInitial(settings, screen, sky, inic)
 
             if inic.val == 0:
                 break
@@ -62,7 +62,7 @@ def run():
                 # Options Screen
                 while True:
                     checkEventsOptions(opt, sky)
-                    updateScreenOptions(sett, screen, sky, opt)
+                    updateScreenOptions(settings, screen, sky, opt)
 
                     if opt.val == 0:
                         opt.state = 0
@@ -71,7 +71,7 @@ def run():
                         # Ship Choose
                         while True:
                             checkEventsShips(ships, sky)
-                            updateScreenShips(sett, screen, sky, ships)
+                            updateScreenShips(settings, screen, sky, ships)
 
                             if ships.back:
                                 ships.back = False
@@ -84,7 +84,7 @@ def run():
                         # Level Choose
                         while True:
                             checkEventsLevel(level, sky)
-                            updateScreenLevel(sett, screen, sky, level)
+                            updateScreenLevel(settings, screen, sky, level)
 
                             if level.back:
                                 level.back = False
@@ -97,7 +97,7 @@ def run():
                         # Controls Visualizer
                         while True:
                             checkEventsControls(control, sky)
-                            updateScreenControls(sett, screen, sky, control)
+                            updateScreenControls(settings, screen, sky, control)
 
                             if control.back:
                                 control.back = False
@@ -166,7 +166,7 @@ def run():
         # Count
         for num in range(1, 4):
             for _ in range(0, 350):
-                updateScreenCount(sett, screen, sky, count, num)
+                updateScreenCount(settings, screen, sky, count, num)
 
         # Game
         for enemie in enemies:
@@ -174,10 +174,10 @@ def run():
 
             while True:
                 if vel % 100 == 0 and sky.on:
-                    if sett.back[0] >= 1:
-                        sett.back[0] -= 1
-                        sett.back[1] -= 1
-                        sett.back[2] -= 1
+                    if settings.back[0] >= 1:
+                        settings.back[0] -= 1
+                        settings.back[1] -= 1
+                        settings.back[2] -= 1
 
                 checkEventsLead(screen, ship, sky)
 
@@ -185,7 +185,7 @@ def run():
                 enemie.move(vel)
                 ship.bullet.update(ship.rect.centerx, ship.rect.bottom)
 
-                updateScreenLead(sett, screen, sky, ship, enemie)
+                updateScreenLead(settings, screen, sky, ship, enemie)
 
                 enemie.colision(ship)
 
@@ -206,6 +206,6 @@ def run():
                 break
 
         for _ in range(0, 1500):
-            updateEnd(sett, screen, sky, end, defeat)
+            updateEnd(settings, screen, sky, end, defeat)
 
         inic.val = -1
