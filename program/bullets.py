@@ -7,7 +7,7 @@ class Bullet:
     def __init__(self, screen, center, bottom):
         self.screen = screen
 
-        self.image = pygame.image.load(getPath("images/munition/_bullet.png"))
+        self.image = pygame.image.load(getPath("images/munition/bullet.png"))
 
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
