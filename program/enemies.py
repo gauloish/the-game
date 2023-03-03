@@ -2,6 +2,7 @@ import pygame
 
 from .functions import getPath
 from .life import Life
+from .ship import Ship
 
 colors_pawn = {
     0: getPath("images/enemies/pawn/pawn_blue.png"),
@@ -39,7 +40,9 @@ class Pawn:
         velocity: int
     """
 
-    def __init__(self, screen, color, center, velocity, life):
+    def __init__(
+        self, screen: pygame.Surface, color: int, center: int, velocity: int, life: int
+    ) -> None:
         """Pawn initialize
 
         Args:
@@ -73,7 +76,7 @@ class Pawn:
 
         self.velocity = velocity
 
-    def blitme(self):
+    def blitme(self) -> None:
         """Show image of pawn"""
 
         self.screen.blit(self.image, self.rect)
@@ -81,7 +84,7 @@ class Pawn:
         for life in self.lifes:
             life.blitme()
 
-    def move(self, velocity):
+    def move(self, velocity: int) -> None:
         """Move pawn
 
         Args:
@@ -100,7 +103,7 @@ class Pawn:
             for life in self.lifes:
                 life.rect.bottom += 2
 
-    def colision(self, ship):
+    def colision(self, ship: Ship) -> None:
         """Verify colision in bullets, ship or back
 
         Args:
@@ -120,7 +123,7 @@ class Pawn:
 
                     ship.bullet.moving = False
 
-    def invade(self):
+    def invade(self) -> bool:
         """Verify invasion by pawn
 
         Returns:
@@ -132,7 +135,7 @@ class Pawn:
         else:
             return False
 
-    def death(self):
+    def death(self) -> bool:
         """Verify pawn death
 
         Returns:
@@ -160,7 +163,9 @@ class Knight:
         velocity: int
     """
 
-    def __init__(self, screen, color, center, velocity, life):
+    def __init__(
+        self, screen: pygame.Surface, color: int, center: int, velocity: int, life: int
+    ) -> None:
         """Knight initialize
 
         Args:
@@ -194,7 +199,7 @@ class Knight:
 
         self.velocity = velocity
 
-    def blitme(self):
+    def blitme(self) -> None:
         """Show image of knight"""
 
         self.screen.blit(self.image, self.rect)
@@ -202,7 +207,7 @@ class Knight:
         for life in self.lifes:
             life.blitme()
 
-    def move(self, velocity):
+    def move(self, velocity: int) -> None:
         """Move knight
 
         Args:
@@ -221,7 +226,7 @@ class Knight:
             for life in self.lifes:
                 life.rect.bottom += 2
 
-    def colision(self, ship):
+    def colision(self, ship: Ship) -> None:
         """Verify colision in bullets or ship
 
         Args:
@@ -241,7 +246,7 @@ class Knight:
 
                     ship.bullet.moving = False
 
-    def invade(self):
+    def invade(self) -> bool:
         """Verify invasion by knight
 
         Returns:
@@ -253,7 +258,7 @@ class Knight:
         else:
             return False
 
-    def death(self):
+    def death(self) -> bool:
         """Verify knight death
 
         Returns:
@@ -281,7 +286,9 @@ class Bishop:
         velocity: int
     """
 
-    def __init__(self, screen, color, center, velocity, life):
+    def __init__(
+        self, screen: pygame.Surface, color: int, center: int, velocity: int, life: int
+    ) -> None:
         """Knight Initialize
 
         Args:
@@ -315,7 +322,7 @@ class Bishop:
 
         self.velocity = velocity
 
-    def blitme(self):
+    def blitme(self) -> None:
         """Show image of bishop"""
 
         self.screen.blit(self.image, self.rect)
@@ -323,7 +330,7 @@ class Bishop:
         for life in self.lifes:
             life.blitme()
 
-    def move(self, velocity):
+    def move(self, velocity: int) -> None:
         """Move Bishop
 
         Args:
@@ -336,7 +343,7 @@ class Bishop:
             for life in self.lifes:
                 life.rect.bottom += 1
 
-    def colision(self, ship):
+    def colision(self, ship: Ship) -> None:
         """Verify colision in bullets or ship
 
         Args:
@@ -356,7 +363,7 @@ class Bishop:
 
                     ship.bullet.moving = False
 
-    def invade(self):
+    def invade(self) -> bool:
         """Verify invasion by bishop
 
         Returns:
@@ -368,7 +375,7 @@ class Bishop:
         else:
             return False
 
-    def death(self):
+    def death(self) -> bool:
         """Verify bishop death
 
         Returns:
