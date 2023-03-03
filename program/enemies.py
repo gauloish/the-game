@@ -25,7 +25,7 @@ cores_pishop = {
 
 
 class Pawn:
-    def __init__(self, screen, color, posx, vel, life, ship):
+    def __init__(self, screen, color, posx, vel, life):
         self.screen = screen
         self.color = color
 
@@ -96,7 +96,7 @@ class Pawn:
 
 
 class Knight:
-    def __init__(self, screen, color, posx, vel, life, ship):
+    def __init__(self, screen, color, posx, vel, life):
         self.screen = screen
         self.color = color
 
@@ -167,7 +167,7 @@ class Knight:
 
 
 class Pishop:
-    def __init__(self, screen, color, posx, vel, life, ship):
+    def __init__(self, screen, color, posx, vel, life):
         self.screen = screen
         self.color = color
 
