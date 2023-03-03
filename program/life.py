@@ -20,7 +20,7 @@ class Life:
         bottom: int
     """
 
-    def __init__(self, screen, center, bottom):
+    def __init__(self, screen: pygame.Surface, center: int, bottom: int) -> None:
         """Initialize Bullet
 
         Args:
@@ -39,7 +39,7 @@ class Life:
         self.rect.centerx = center
         self.rect.bottom = bottom
 
-    def blitme(self):
+    def blitme(self) -> None:
         """Show Image of Life"""
 
         self.screen.blit(self.image, self.rect)
