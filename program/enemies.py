@@ -3,20 +3,20 @@ import pygame
 from .functions import getPath
 from .life import Life
 
-cores_pawn = {
+colors_pawn = {
     0: getPath("images/enemies/pawn/pawn_blue.png"),
     1: getPath("images/enemies/pawn/pawn_pink.png"),
     2: getPath("images/enemies/pawn/pawn_yellow.png"),
 }
 
-cores_knight = {
+colors_knight = {
     0: getPath("images/enemies/knight/knight_blue.png"),
     1: getPath("images/enemies/knight/knight_green.png"),
     2: getPath("images/enemies/knight/knight_red.png"),
     3: getPath("images/enemies/knight/knight_yellow.png"),
 }
 
-cores_pishop = {
+colors_bishop = {
     0: getPath("images/enemies/bishop/bishop_blue.png"),
     1: getPath("images/enemies/bishop/bishop_green.png"),
     2: getPath("images/enemies/bishop/bishop_pink.png"),
@@ -29,7 +29,7 @@ class Pawn:
         self.screen = screen
         self.color = color
 
-        self.image = pygame.image.load(cores_pawn[color])
+        self.image = pygame.image.load(colors_pawn[color])
 
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
@@ -100,7 +100,7 @@ class Knight:
         self.screen = screen
         self.color = color
 
-        self.image = pygame.image.load(cores_knight[color])
+        self.image = pygame.image.load(colors_knight[color])
 
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
@@ -166,12 +166,12 @@ class Knight:
             return False
 
 
-class Pishop:
+class Bishop:
     def __init__(self, screen, color, posx, vel, life):
         self.screen = screen
         self.color = color
 
-        self.image = pygame.image.load(cores_pishop[color])
+        self.image = pygame.image.load(colors_bishop[color])
 
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
