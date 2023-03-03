@@ -14,7 +14,7 @@ class Settings:
         display: str
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize Settings"""
 
         self.width = 1200
