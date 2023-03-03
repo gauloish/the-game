@@ -4,7 +4,25 @@ from .functions import getPath
 
 
 class Background:
+    """Screen background
+
+    Attributes:
+        screen: pygame.Surface
+        back: pygame.Surface
+        rect_back: pygame.Rect
+        screen_back: pygame.Rect
+        centerx: int
+        bottom: int
+        on: bool
+    """
+
     def __init__(self, screen):
+        """Initialize background
+
+        Args:
+            screen (pygame.Surface): game screen
+        """
+
         self.screen = screen
 
         self.back = pygame.image.load(getPath("images/sky/sky.png"))
@@ -22,7 +40,36 @@ class Background:
 
 
 class Initial:
+    """Initial screen
+
+    Attributes:
+        screen: pygame.Surface
+        initial: pygame.Surface
+        start_select: pygame.Surface
+        option_select: pygame.Rect
+        rect_initial: pygame.Rect
+        rect_start_select: pygame.Rect
+        rect_option_select: pygame.Rect
+        screen_rect_initial: pygame.Rect
+        screen_rect_start_select: pygame.Rect
+        screen_rect_option_select: pygame.Rect
+        centerx: int
+        centerx: int
+        centerx: int
+        bottom: int
+        bottom: int
+        bottom: int
+        state: int
+        value: int
+    """
+
     def __init__(self, screen):
+        """Initialize initial
+
+        Args:
+            screen (pygame.Surface): game screen
+        """
+
         self.screen = screen
 
         self.initial = pygame.image.load(getPath("images/elements/initial/initial.png"))
@@ -50,23 +97,68 @@ class Initial:
         self.rect_option_select.bottom = 637
 
         self.state = 0
-        self.val = -1
+        self.value = -1
 
     def blitInitial(self):
+        """Show initial screen"""
+
         self.screen.blit(self.initial, self.rect_initial)
 
-    def blitStartSelec(self):
+    def blitStartSelect(self):
+        """Show start select"""
+
         self.screen.blit(self.start_select, self.rect_start_select)
 
-    def blitOptionSelec(self):
+    def blitOptionSelect(self):
+        """Show options select"""
+
         self.screen.blit(self.option_select, self.rect_option_select)
 
 
 class Options:
+    """Options screen
+
+    Attributes:
+        screen: pygame.Surface
+        option: pygame.Surface
+        ships_select: pygame.Surface
+        level_select: pygame.Surface
+        controls_select: pygame.Surface
+        back_select: pygame.Surface
+        rect_option: pygame.Rect
+        rect_ships_select: pygame.Rect
+        rect_level_select: pygame.Rect
+        rect_controls_select: pygame.Rect
+        rect_back_select: pygame.Rect
+        screen_option: pygame.Rect
+        screen_ships_select: pygame.Rect
+        screen_level_select: pygame.Rect
+        screen_controls_select: pygame.Rect
+        screen_back_select: pygame.Rect
+        centerx: int
+        centerx: int
+        centerx: int
+        centerx: int
+        centerx: int
+        bottom: int
+        bottom: int
+        bottom: int
+        bottom: int
+        bottom: int
+        state: int
+        value: int
+    """
+
     def __init__(self, screen):
+        """Initialize options
+
+        Args:
+            screen (pygame.Surface): game screen
+        """
+
         self.screen = screen
 
-        self.opt = pygame.image.load(getPath("images/elements/options/options.png"))
+        self.option = pygame.image.load(getPath("images/elements/options/options.png"))
         self.ships_select = pygame.image.load(
             getPath("images/elements/options/ships_select.png")
         )
@@ -80,51 +172,85 @@ class Options:
             getPath("images/elements/options/back_select.png")
         )
 
-        self.rect_opt = self.opt.get_rect()
+        self.rect_option = self.option.get_rect()
         self.rect_ships_select = self.ships_select.get_rect()
         self.rect_level_select = self.level_select.get_rect()
         self.rect_controls_select = self.controls_select.get_rect()
         self.rect_back_select = self.back_select.get_rect()
 
-        self.screen_opt = self.screen.get_rect()
+        self.screen_option = self.screen.get_rect()
         self.screen_ships_select = self.screen.get_rect()
         self.screen_level_select = self.screen.get_rect()
         self.screen_controls_select = self.screen.get_rect()
         self.screen_back_select = self.screen.get_rect()
 
-        self.rect_opt.centerx = 600
+        self.rect_option.centerx = 600
         self.rect_ships_select.centerx = 600
         self.rect_level_select.centerx = 600
         self.rect_controls_select.centerx = 600
         self.rect_back_select.centerx = 600
 
-        self.rect_opt.bottom = 660
+        self.rect_option.bottom = 660
         self.rect_ships_select.bottom = 246
         self.rect_level_select.bottom = 330
         self.rect_controls_select.bottom = 414
         self.rect_back_select.bottom = 652
 
         self.state = 0
-        self.val = -1
+        self.value = -1
 
     def blitOptions(self):
-        self.screen.blit(self.opt, self.rect_opt)
+        """Show options"""
 
-    def blitShipSelec(self):
+        self.screen.blit(self.option, self.rect_option)
+
+    def blitShipSelect(self):
+        """Show ship option selector"""
+
         self.screen.blit(self.ships_select, self.rect_ships_select)
 
-    def blitLevelSelec(self):
+    def blitLevelSelect(self):
+        """Show level option selector"""
+
         self.screen.blit(self.level_select, self.rect_level_select)
 
-    def blitControlSelec(self):
+    def blitControlSelect(self):
+        """Show control option selector"""
+
         self.screen.blit(self.controls_select, self.rect_controls_select)
 
-    def blitBackSelec(self):
+    def blitBackSelect(self):
+        """Show back option selector"""
+
         self.screen.blit(self.back_select, self.rect_back_select)
 
 
 class Ships:
+    """Ships
+
+    Attributes:
+        screen: pygame.Surface
+        boxes: pygame.Surface
+        select: pygame.Surface
+        rect_boxes: pygame.Rect
+        rect_select: pygame.Rect
+        screen_rect_boxes: pygame.Rect
+        screen_rect_select: pygame.Rect
+        centerx: int
+        centerx: int
+        bottom: int
+        bottom: int
+        color: int
+        back: bool
+    """
+
     def __init__(self, screen):
+        """Initialize ship
+
+        Args:
+            screen (pygame.Surface): game screen
+        """
+
         self.screen = screen
 
         self.boxes = pygame.image.load(
@@ -150,23 +276,68 @@ class Ships:
         self.back = False
 
     def blitBoxes(self):
+        """Show boxes"""
+
         self.screen.blit(self.boxes, self.rect_boxes)
 
-    def blitSelec(self):
+    def blitSelect(self):
+        """Show ship selector"""
+
         self.screen.blit(self.select, self.rect_select)
 
-    def dist(self, num):  # 352 476 600 724 848
+    def dist(self, number):  # 352 476 600 724 848
+        """Change box position"""
+
         right = {352: 476, 476: 600, 600: 724, 724: 848, 848: 352}
         left = {352: 848, 476: 352, 600: 476, 724: 600, 848: 724}
 
-        if num == 0:
+        if number == 0:
             self.rect_select.centerx = left[self.rect_select.centerx]
-        if num == 1:
+        if number == 1:
             self.rect_select.centerx = right[self.rect_select.centerx]
 
 
 class Level:
+    """Levels
+
+    Attributes:
+        screen: pygame.Surface
+        levels: pygame.Surface
+        easy_select: pygame.Surface
+        medium_select: pygame.Surface
+        hard_select: pygame.Surface
+        insane_select: pygame.Surface
+        rect_levels: pygame.Rect
+        rect_easy_select: pygame.Rect
+        rect_medium_select: pygame.Rect
+        rect_hard_select: pygame.Rect
+        rect_insane_select: pygame.Rect
+        screen_option: pygame.Rect
+        screen_easy_select: pygame.Rect
+        screen_medium_select: pygame.Rect
+        screen_hard_select: pygame.Rect
+        screen_insane_select: pygame.Rect
+        centerx: int
+        centerx: int
+        centerx: int
+        centerx: int
+        centerx: int
+        bottom: int
+        bottom: int
+        bottom: int
+        bottom: int
+        bottom: int
+        lel: int
+        back: bool
+    """
+
     def __init__(self, screen):
+        """Initialize level
+
+        Args:
+            screen (pygame.Surface): game screen
+        """
+
         self.screen = screen
 
         self.levels = pygame.image.load(
@@ -191,7 +362,7 @@ class Level:
         self.rect_hard_select = self.hard_select.get_rect()
         self.rect_insane_select = self.insane_select.get_rect()
 
-        self.screen_opt = self.screen.get_rect()
+        self.screen_option = self.screen.get_rect()
         self.screen_easy_select = self.screen.get_rect()
         self.screen_medium_select = self.screen.get_rect()
         self.screen_hard_select = self.screen.get_rect()
@@ -213,23 +384,51 @@ class Level:
         self.back = False
 
     def blitLevels(self):
+        """Show levels options"""
+
         self.screen.blit(self.levels, self.rect_levels)
 
-    def blitEasySelec(self):
+    def blitEasySelect(self):
+        """Show easy level option selector"""
+
         self.screen.blit(self.easy_select, self.rect_easy_select)
 
-    def blitMediumSelec(self):
+    def blitMediumSelect(self):
+        """Show medium level option selector"""
+
         self.screen.blit(self.medium_select, self.rect_medium_select)
 
-    def blitHardSelec(self):
+    def blitHardSelect(self):
+        """Show hard level option selector"""
+
         self.screen.blit(self.hard_select, self.rect_hard_select)
 
-    def blitInsaneSelec(self):
+    def blitInsaneSelect(self):
+        """Show insane level option selector"""
+
         self.screen.blit(self.insane_select, self.rect_insane_select)
 
 
 class Controls:
+    """Controls
+
+    Attributes:
+        screen: pygame.Surface
+        cont: pygame.Surface
+        rect_cont: pygame.Rect
+        screen_cont: pygame.Rect
+        centerx: int
+        bottom: int
+        back: bool
+    """
+
     def __init__(self, screen):
+        """Initialize controls
+
+        Args:
+            screen (pygame.Surface): game screen
+        """
+
         self.screen = screen
 
         self.cont = pygame.image.load(
@@ -245,11 +444,40 @@ class Controls:
         self.back = False
 
     def blitControls(self):
+        """Show controls"""
+
         self.screen.blit(self.cont, self.rect_cont)
 
 
 class Count:
+    """Count
+
+    Attributes:
+        screen: pygame.Surface
+        number_1: pygame.Surface
+        number_2: pygame.Surface
+        number_3: pygame.Surface
+        rect_number_1: pygame.Rect
+        rect_number_2: pygame.Rect
+        rect_number_3: pygame.Rect
+        screen_number_1: pygame.Rect
+        screen_number_2: pygame.Rect
+        screen_number_3: pygame.Rect
+        centerx: int
+        centerx: int
+        centerx: int
+        bottom: int
+        bottom: int
+        bottom: int
+    """
+
     def __init__(self, screen):
+        """Intialize count
+
+        Args:
+            screen (pygame.Surface): game screen
+        """
+
         self.screen = screen
 
         self.number_1 = pygame.image.load(getPath("images/elements/start/number_1.png"))
@@ -272,17 +500,41 @@ class Count:
         self.rect_number_2.bottom = 500
         self.rect_number_3.bottom = 500
 
-    def blitNum(self, num):
-        if num == 1:
+    def blitNumber(self, number):
+        """Show count"""
+
+        if number == 1:
             self.screen.blit(self.number_1, self.rect_number_1)
-        elif num == 2:
+        elif number == 2:
             self.screen.blit(self.number_2, self.rect_number_2)
-        elif num == 3:
+        elif number == 3:
             self.screen.blit(self.number_3, self.rect_number_3)
 
 
 class End:
+    """End
+
+    Attributes:
+        screen: pygame.Surface
+        gameover: pygame.Surface
+        victory: pygame.Surface
+        rect_gameover: pygame.Rect
+        rect_victory: pygame.Rect
+        screen_gameover: pygame.Rect
+        screen_victory: pygame.Rect
+        centerx: int
+        centerx: int
+        bottom: int
+        bottom: int
+    """
+
     def __init__(self, screen):
+        """Initialize end
+
+        Args:
+            screen (pygame.Surface): game screen
+        """
+
         self.screen = screen
 
         self.gameover = pygame.image.load(getPath("images/elements/final/gameover.png"))
@@ -301,6 +553,8 @@ class End:
         self.rect_victory.bottom = 456
 
     def blitEnd(self, defeat):
+        """Show end game"""
+
         if defeat:
             self.screen.blit(self.gameover, self.rect_gameover)
         else:
