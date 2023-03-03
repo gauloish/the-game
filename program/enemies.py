@@ -25,7 +25,7 @@ colors_bishop = {
 
 
 class Pawn:
-    def __init__(self, screen, color, posx, vel, life):
+    def __init__(self, screen, color, center, velocity, life):
         self.screen = screen
         self.color = color
 
@@ -34,20 +34,20 @@ class Pawn:
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
-        self.rect.centerx = posx
+        self.rect.centerx = center
         self.rect.bottom = 0
 
         self.life = life
 
         if self.life == 1:
-            self.lifes = [Life(screen, posx, self.rect.bottom - 50)]
+            self.lifes = [Life(screen, center, self.rect.bottom - 50)]
         elif self.life == 2:
             self.lifes = [
-                Life(screen, posx - 16, self.rect.bottom - 50),
-                Life(screen, posx + 16, self.rect.bottom - 50),
+                Life(screen, center - 16, self.rect.bottom - 50),
+                Life(screen, center + 16, self.rect.bottom - 50),
             ]
 
-        self.velocity = vel
+        self.velocity = velocity
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
@@ -55,9 +55,9 @@ class Pawn:
         for life in self.lifes:
             life.blitme()
 
-    def move(self, vel):
+    def move(self, velocity):
         if self.velocity != -1:
-            if vel % self.velocity == 0:
+            if velocity % self.velocity == 0:
                 self.rect.bottom += 1
 
                 for life in self.lifes:
@@ -96,7 +96,7 @@ class Pawn:
 
 
 class Knight:
-    def __init__(self, screen, color, posx, vel, life):
+    def __init__(self, screen, color, center, velocity, life):
         self.screen = screen
         self.color = color
 
@@ -105,20 +105,20 @@ class Knight:
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
-        self.rect.centerx = posx
+        self.rect.centerx = center
         self.rect.bottom = 0
 
         self.life = life
 
         if self.life == 1:
-            self.lifes = [Life(screen, posx, self.rect.bottom - 70)]
+            self.lifes = [Life(screen, center, self.rect.bottom - 70)]
         elif self.life == 2:
             self.lifes = [
-                Life(screen, posx - 16, self.rect.bottom - 70),
-                Life(screen, posx + 16, self.rect.bottom - 70),
+                Life(screen, center - 16, self.rect.bottom - 70),
+                Life(screen, center + 16, self.rect.bottom - 70),
             ]
 
-        self.velocity = vel
+        self.velocity = velocity
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
@@ -126,9 +126,9 @@ class Knight:
         for life in self.lifes:
             life.blitme()
 
-    def move(self, vel):
+    def move(self, velocity):
         if self.velocity != -1:
-            if vel % self.velocity == 0:
+            if velocity % self.velocity == 0:
                 self.rect.bottom += 1
 
                 for life in self.lifes:
@@ -167,7 +167,7 @@ class Knight:
 
 
 class Bishop:
-    def __init__(self, screen, color, posx, vel, life):
+    def __init__(self, screen, color, center, velocity, life):
         self.screen = screen
         self.color = color
 
@@ -176,20 +176,20 @@ class Bishop:
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
-        self.rect.centerx = posx
+        self.rect.centerx = center
         self.rect.bottom = 0
 
         self.life = life
 
         if self.life == 1:
-            self.lifes = [Life(screen, posx, self.rect.bottom - 70)]
+            self.lifes = [Life(screen, center, self.rect.bottom - 70)]
         elif self.life == 2:
             self.lifes = [
-                Life(screen, posx - 16, self.rect.bottom - 70),
-                Life(screen, posx + 16, self.rect.bottom - 70),
+                Life(screen, center - 16, self.rect.bottom - 70),
+                Life(screen, center + 16, self.rect.bottom - 70),
             ]
 
-        self.velocity = vel
+        self.velocity = velocity
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
@@ -197,8 +197,8 @@ class Bishop:
         for life in self.lifes:
             life.blitme()
 
-    def move(self, vel):
-        if vel % self.velocity == 0:
+    def move(self, velocity):
+        if velocity % self.velocity == 0:
             self.rect.bottom += 1
 
             for life in self.lifes:
