@@ -28,6 +28,7 @@ class Life:
             center (int): horizontal center position of image
             bottom (int): vertical bottom position of image
         """
+
         self.screen = screen
 
         self.image = pygame.image.load(getPath("images/life/life.png"))
@@ -40,4 +41,5 @@ class Life:
 
     def blitme(self):
         """Show Image of Life"""
+
         self.screen.blit(self.image, self.rect)
