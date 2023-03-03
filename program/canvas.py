@@ -16,7 +16,7 @@ class Background:
         on: bool
     """
 
-    def __init__(self, screen):
+    def __init__(self, screen: pygame.Surface) -> None:
         """Initialize background
 
         Args:
@@ -35,7 +35,8 @@ class Background:
 
         self.on = False
 
-    def blitBack(self):
+    def blitBack(self) -> None:
+        """Show background"""
         self.screen.blit(self.back, self.rect_back)
 
 
@@ -63,7 +64,7 @@ class Initial:
         value: int
     """
 
-    def __init__(self, screen):
+    def __init__(self, screen: pygame.Surface) -> None:
         """Initialize initial
 
         Args:
@@ -99,17 +100,17 @@ class Initial:
         self.state = 0
         self.value = -1
 
-    def blitInitial(self):
+    def blitInitial(self) -> None:
         """Show initial screen"""
 
         self.screen.blit(self.initial, self.rect_initial)
 
-    def blitStartSelect(self):
+    def blitStartSelect(self) -> None:
         """Show start select"""
 
         self.screen.blit(self.start_select, self.rect_start_select)
 
-    def blitOptionSelect(self):
+    def blitOptionSelect(self) -> None:
         """Show options select"""
 
         self.screen.blit(self.option_select, self.rect_option_select)
@@ -149,7 +150,7 @@ class Options:
         value: int
     """
 
-    def __init__(self, screen):
+    def __init__(self, screen: pygame.Surface) -> None:
         """Initialize options
 
         Args:
@@ -199,27 +200,27 @@ class Options:
         self.state = 0
         self.value = -1
 
-    def blitOptions(self):
+    def blitOptions(self) -> None:
         """Show options"""
 
         self.screen.blit(self.option, self.rect_option)
 
-    def blitShipSelect(self):
+    def blitShipSelect(self) -> None:
         """Show ship option selector"""
 
         self.screen.blit(self.ships_select, self.rect_ships_select)
 
-    def blitLevelSelect(self):
+    def blitLevelSelect(self) -> None:
         """Show level option selector"""
 
         self.screen.blit(self.level_select, self.rect_level_select)
 
-    def blitControlSelect(self):
+    def blitControlSelect(self) -> None:
         """Show control option selector"""
 
         self.screen.blit(self.controls_select, self.rect_controls_select)
 
-    def blitBackSelect(self):
+    def blitBackSelect(self) -> None:
         """Show back option selector"""
 
         self.screen.blit(self.back_select, self.rect_back_select)
@@ -244,7 +245,7 @@ class Ships:
         back: bool
     """
 
-    def __init__(self, screen):
+    def __init__(self, screen: pygame.Surface) -> None:
         """Initialize ship
 
         Args:
@@ -275,17 +276,17 @@ class Ships:
         self.color = 0
         self.back = False
 
-    def blitBoxes(self):
+    def blitBoxes(self) -> None:
         """Show boxes"""
 
         self.screen.blit(self.boxes, self.rect_boxes)
 
-    def blitSelect(self):
+    def blitSelect(self) -> None:
         """Show ship selector"""
 
         self.screen.blit(self.select, self.rect_select)
 
-    def dist(self, number):  # 352 476 600 724 848
+    def dist(self, number: int) -> None:  # 352 476 600 724 848
         """Change box position"""
 
         right = {352: 476, 476: 600, 600: 724, 724: 848, 848: 352}
@@ -331,7 +332,7 @@ class Level:
         back: bool
     """
 
-    def __init__(self, screen):
+    def __init__(self, screen: pygame.Surface) -> None:
         """Initialize level
 
         Args:
@@ -383,27 +384,27 @@ class Level:
         self.lel = 0
         self.back = False
 
-    def blitLevels(self):
+    def blitLevels(self) -> None:
         """Show levels options"""
 
         self.screen.blit(self.levels, self.rect_levels)
 
-    def blitEasySelect(self):
+    def blitEasySelect(self) -> None:
         """Show easy level option selector"""
 
         self.screen.blit(self.easy_select, self.rect_easy_select)
 
-    def blitMediumSelect(self):
+    def blitMediumSelect(self) -> None:
         """Show medium level option selector"""
 
         self.screen.blit(self.medium_select, self.rect_medium_select)
 
-    def blitHardSelect(self):
+    def blitHardSelect(self) -> None:
         """Show hard level option selector"""
 
         self.screen.blit(self.hard_select, self.rect_hard_select)
 
-    def blitInsaneSelect(self):
+    def blitInsaneSelect(self) -> None:
         """Show insane level option selector"""
 
         self.screen.blit(self.insane_select, self.rect_insane_select)
@@ -422,7 +423,7 @@ class Controls:
         back: bool
     """
 
-    def __init__(self, screen):
+    def __init__(self, screen: pygame.Surface) -> None:
         """Initialize controls
 
         Args:
@@ -443,7 +444,7 @@ class Controls:
 
         self.back = False
 
-    def blitControls(self):
+    def blitControls(self) -> None:
         """Show controls"""
 
         self.screen.blit(self.cont, self.rect_cont)
@@ -471,7 +472,7 @@ class Count:
         bottom: int
     """
 
-    def __init__(self, screen):
+    def __init__(self, screen: pygame.Surface) -> None:
         """Intialize count
 
         Args:
@@ -500,7 +501,7 @@ class Count:
         self.rect_number_2.bottom = 500
         self.rect_number_3.bottom = 500
 
-    def blitNumber(self, number):
+    def blitNumber(self, number: int) -> None:
         """Show count"""
 
         if number == 1:
@@ -528,7 +529,7 @@ class End:
         bottom: int
     """
 
-    def __init__(self, screen):
+    def __init__(self, screen: pygame.Surface) -> None:
         """Initialize end
 
         Args:
@@ -552,7 +553,7 @@ class End:
         self.rect_gameover.bottom = 525
         self.rect_victory.bottom = 456
 
-    def blitEnd(self, defeat):
+    def blitEnd(self, defeat: bool) -> None:
         """Show end game"""
 
         if defeat:
