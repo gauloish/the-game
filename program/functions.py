@@ -16,37 +16,37 @@ def getPath(path):
 ######################################Start######################################
 
 
-def checkEventsInitial(inic, sky):
+def checkEventsInitial(initial, sky):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
 
         elif event.type == pygame.KEYDOWN:
             if event.key in [pygame.K_UP, pygame.K_w]:
-                inic.state = (inic.state - 1) % 2
+                initial.state = (initial.state - 1) % 2
 
             if event.key in [pygame.K_DOWN, pygame.K_s]:
-                inic.state = (inic.state + 1) % 2
+                initial.state = (initial.state + 1) % 2
 
             if event.key in [pygame.K_RETURN, pygame.K_KP_ENTER]:
-                if inic.state == 0:
-                    inic.val = 0
-                elif inic.state == 1:
-                    inic.val = 1
+                if initial.state == 0:
+                    initial.value = 0
+                elif initial.state == 1:
+                    initial.value = 1
 
             if event.key in [pygame.K_RSHIFT, pygame.K_LSHIFT]:
                 sky.on = True
 
 
-def updateScreenInitial(sett, screen, sky, inic):
-    screen.fill(sett.back)
+def updateScreenInitial(settings, screen, sky, initial):
+    screen.fill(settings.back)
     sky.blitBack()
-    inic.blitInitial()
+    initial.blitInitial()
 
-    if inic.state == 0:
-        inic.blitStartSelec()
-    elif inic.state == 1:
-        inic.blitOptionSelec()
+    if initial.state == 0:
+        initial.blitStartSelec()
+    elif initial.state == 1:
+        initial.blitOptionSelec()
 
     pygame.display.flip()
 
@@ -54,45 +54,45 @@ def updateScreenInitial(sett, screen, sky, inic):
 #####################################Options#####################################
 
 
-def checkEventsOptions(opt, sky):
+def checkEventsOptions(option, sky):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
 
         elif event.type == pygame.KEYDOWN:
             if event.key in [pygame.K_UP, pygame.K_w]:
-                opt.state = (opt.state - 1) % 4
+                option.state = (option.state - 1) % 4
 
             if event.key in [pygame.K_DOWN, pygame.K_s]:
-                opt.state = (opt.state + 1) % 4
+                option.state = (option.state + 1) % 4
 
             if event.key in [pygame.K_RETURN, pygame.K_KP_ENTER]:
-                if opt.state == 0:
-                    opt.val = 0
-                elif opt.state == 1:
-                    opt.val = 1
-                elif opt.state == 2:
-                    opt.val = 2
-                elif opt.state == 3:
-                    opt.val = 3
+                if option.state == 0:
+                    option.value = 0
+                elif option.state == 1:
+                    option.value = 1
+                elif option.state == 2:
+                    option.value = 2
+                elif option.state == 3:
+                    option.value = 3
 
             if event.key in [pygame.K_RSHIFT, pygame.K_LSHIFT]:
                 sky.on = True
 
 
-def updateScreenOptions(sett, screen, sky, opt):
-    screen.fill(sett.back)
+def updateScreenOptions(settings, screen, sky, option):
+    screen.fill(settings.back)
     sky.blitBack()
-    opt.blitOptions()
+    option.blitOptions()
 
-    if opt.state == 0:
-        opt.blitShipSelec()
-    elif opt.state == 1:
-        opt.blitLevelSelec()
-    elif opt.state == 2:
-        opt.blitControlSelec()
-    elif opt.state == 3:
-        opt.blitBackSelec()
+    if option.state == 0:
+        option.blitShipSelec()
+    elif option.state == 1:
+        option.blitLevelSelec()
+    elif option.state == 2:
+        option.blitControlSelec()
+    elif option.state == 3:
+        option.blitBackSelec()
 
     pygame.display.flip()
 
@@ -121,8 +121,8 @@ def checkEventsShips(Ships, sky):
                 sky.on = True
 
 
-def updateScreenShips(sett, screen, sky, Ships):
-    screen.fill(sett.back)
+def updateScreenShips(settings, screen, sky, Ships):
+    screen.fill(settings.back)
     sky.blitBack()
     Ships.blitBoxes()
     Ships.blitSelec()
@@ -151,8 +151,8 @@ def checkEventsLevel(level, sky):
                 sky.on = True
 
 
-def updateScreenLevel(sett, screen, sky, level):
-    screen.fill(sett.back)
+def updateScreenLevel(settings, screen, sky, level):
+    screen.fill(settings.back)
     sky.blitBack()
     level.blitLevels()
 
@@ -184,8 +184,8 @@ def checkEventsControls(control, sky):
                 sky.on = True
 
 
-def updateScreenControls(sett, screen, sky, control):
-    screen.fill(sett.back)
+def updateScreenControls(settings, screen, sky, control):
+    screen.fill(settings.back)
     sky.blitBack()
     control.blitControls()
     pygame.display.flip()
@@ -194,8 +194,8 @@ def updateScreenControls(sett, screen, sky, control):
 #####################################Count#####################################
 
 
-def updateScreenCount(sett, screen, sky, count, num):
-    screen.fill(sett.back)
+def updateScreenCount(settings, screen, sky, count, num):
+    screen.fill(settings.back)
     sky.blitBack()
     count.blitNum(num)
     pygame.display.flip()
@@ -217,9 +217,9 @@ def checkEventsLead(screen, ship, sky):
 
 def keydownEventLead(screen, event, ship, sky):
     if event.key in [pygame.K_RIGHT, pygame.K_d]:
-        ship.movingR = True
+        ship.moving_right = True
     if event.key in [pygame.K_LEFT, pygame.K_a]:
-        ship.movingL = True
+        ship.moving_left = True
 
     if event.key == pygame.K_SPACE:
         ship.bullet.moving = True
@@ -230,13 +230,13 @@ def keydownEventLead(screen, event, ship, sky):
 
 def keyupEventLead(event, ship):
     if event.key in [pygame.K_RIGHT, pygame.K_d]:
-        ship.movingR = False
+        ship.moving_right = False
     if event.key in [pygame.K_LEFT, pygame.K_a]:
-        ship.movingL = False
+        ship.moving_left = False
 
 
-def updateScreenLead(sett, screen, sky, ship, enemie):
-    screen.fill(sett.back)
+def updateScreenLead(settings, screen, sky, ship, enemie):
+    screen.fill(settings.back)
     sky.blitBack()
     ship.bullet.blitme()
     ship.blitme()
@@ -251,8 +251,8 @@ def gameover(defeat):
         return False
 
 
-def updateEnd(sett, screen, sky, end, defeat):
-    screen.fill(sett.back)
+def updateEnd(settings, screen, sky, end, defeat):
+    screen.fill(settings.back)
     sky.blitBack()
     end.blitEnd(defeat)
     pygame.display.flip()
