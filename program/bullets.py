@@ -1,10 +1,36 @@
+""" Bullets
+
+Class Bullet to emulate a bullet with physics and a sprint
+"""
+
 import pygame
 
 from .functions import getPath
 
 
 class Bullet:
+    """Bullet To Game
+
+    Attributes:
+        screen: pygame.Surface
+        image: pygame.Surface
+        rect: pygame.Rect
+        screen_rect: pygame.Rect
+        centerx: int
+        bottom: int
+        moving: bool
+        velocity: int
+    """
+
     def __init__(self, screen, center, bottom):
+        """Initialize Bullet
+
+        Args:
+            screen (pygame.Surface): game screen
+            center (int): horizontal center position of image
+            bottom (int): vertical bottom position of image
+        """
+
         self.screen = screen
 
         self.image = pygame.image.load(getPath("images/munition/bullet.png"))
@@ -20,9 +46,18 @@ class Bullet:
         self.velocity = 1
 
     def blitme(self):
+        """Show Image of Bullet"""
+
         self.screen.blit(self.image, self.rect)
 
     def update(self, center, bottom):
+        """Update Bullet Position
+
+        Args:
+            center (int): horizontal center position of image
+            bottom (int): vertical bottom position of image
+        """
+
         if self.moving:
             self.rect.bottom -= self.velocity
         else:
