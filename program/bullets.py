@@ -9,7 +9,7 @@ from .functions import getPath
 
 
 class Bullet:
-    """Bullet To Game
+    """Bullet to game
 
     Attributes:
         screen: pygame.Surface
@@ -23,7 +23,7 @@ class Bullet:
     """
 
     def __init__(self, screen: pygame.Surface, center: int, bottom: int) -> None:
-        """Initialize Bullet
+        """Initialize bullet
 
         Args:
             screen (pygame.Surface): game screen
@@ -46,12 +46,12 @@ class Bullet:
         self.velocity = 1
 
     def blitme(self) -> None:
-        """Show Image of Bullet"""
+        """Show image of bullet"""
 
         self.screen.blit(self.image, self.rect)
 
     def update(self, center: int, bottom: int) -> None:
-        """Update Bullet Position
+        """Update bullet position
 
         Args:
             center (int): horizontal center position of image
