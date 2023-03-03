@@ -31,7 +31,9 @@ class Ship:
         bullet: Bullet
     """
 
-    def __init__(self, screen, color, velocity, life):
+    def __init__(
+        self, screen: pygame.Surface, color: int, velocity: int, life: int
+    ) -> None:
         """Initialize ship
 
         Args:
@@ -76,7 +78,7 @@ class Ship:
 
         self.bullet = Bullet(screen, self.rect.centerx, self.rect.bottom)
 
-    def blitme(self):
+    def blitme(self) -> None:
         """Show image of ship"""
 
         self.screen.blit(self.image, self.rect)
@@ -84,7 +86,7 @@ class Ship:
         for life in self.lifes:
             life.blitme()
 
-    def update(self):
+    def update(self) -> None:
         """Update ship position"""
 
         if self.moving_left and self.rect.centerx >= 35:
@@ -99,7 +101,7 @@ class Ship:
             for life in self.lifes:
                 life.rect.centerx += self.velocity
 
-    def hit(self):
+    def hit(self) -> None:
         """Verify hit in enemy"""
 
         self.life -= 1
