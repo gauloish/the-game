@@ -25,7 +25,31 @@ colors_bishop = {
 
 
 class Pawn:
+    """Pawn Enemy
+
+    Attributes:
+        screen: pygame.Surface
+        color: int
+        image: pygame.Surface
+        rect: pygame.Rect
+        screen_rect: pygame.Rect
+        centerx: int
+        bottom: int
+        life: int
+        velocity: int
+    """
+
     def __init__(self, screen, color, center, velocity, life):
+        """Pawn initialize
+
+        Args:
+            screen (pygame.Surface): game screen
+            color (int): color number
+            center (int): horizontal center position of image
+            velocity (int): velocity of pawn
+            life (int): life amount
+        """
+
         self.screen = screen
         self.color = color
 
@@ -50,12 +74,20 @@ class Pawn:
         self.velocity = velocity
 
     def blitme(self):
+        """Show image of pawn"""
+
         self.screen.blit(self.image, self.rect)
 
         for life in self.lifes:
             life.blitme()
 
     def move(self, velocity):
+        """Move pawn
+
+        Args:
+            velocity (int): velocity of pawn
+        """
+
         if self.velocity != -1:
             if velocity % self.velocity == 0:
                 self.rect.bottom += 1
@@ -69,6 +101,12 @@ class Pawn:
                 life.rect.bottom += 2
 
     def colision(self, ship):
+        """Verify colision in bullets, ship or back
+
+        Args:
+            ship (Ship): ship controlled by user
+        """
+
         if ship.bullet.moving:
             if (
                 self.rect.centerx - 27
@@ -83,12 +121,24 @@ class Pawn:
                     ship.bullet.moving = False
 
     def invade(self):
+        """Verify invasion by pawn
+
+        Returns:
+            bool: invasion state
+        """
+
         if self.rect.bottom == 800:
             return True
         else:
             return False
 
     def death(self):
+        """Verify pawn death
+
+        Returns:
+            bool: death state
+        """
+
         if self.life <= 0:
             return True
         else:
@@ -96,7 +146,31 @@ class Pawn:
 
 
 class Knight:
+    """Knight Enemy
+
+    Attributes:
+        screen: pygame.Surface
+        color: int
+        image: pygame.Surface
+        rect: pygame.Rect
+        screen_rect: pygame.Rect
+        centerx: int
+        bottom: int
+        life: int
+        velocity: int
+    """
+
     def __init__(self, screen, color, center, velocity, life):
+        """Knight initialize
+
+        Args:
+            screen (pygame.Surface): game screen
+            color (int): color number
+            center (int): horizontal center position of image
+            velocity (int): velocity of knight
+            life (int): life amount
+        """
+
         self.screen = screen
         self.color = color
 
@@ -121,12 +195,20 @@ class Knight:
         self.velocity = velocity
 
     def blitme(self):
+        """Show image of knight"""
+
         self.screen.blit(self.image, self.rect)
 
         for life in self.lifes:
             life.blitme()
 
     def move(self, velocity):
+        """Move knight
+
+        Args:
+            velocity (int): velocity of knight
+        """
+
         if self.velocity != -1:
             if velocity % self.velocity == 0:
                 self.rect.bottom += 1
@@ -140,6 +222,12 @@ class Knight:
                 life.rect.bottom += 2
 
     def colision(self, ship):
+        """Verify colision in bullets or ship
+
+        Args:
+            ship (Ship): ship controlled by user
+        """
+
         if ship.bullet.moving:
             if (
                 self.rect.centerx - 31
@@ -154,12 +242,24 @@ class Knight:
                     ship.bullet.moving = False
 
     def invade(self):
+        """Verify invasion by knight
+
+        Returns:
+            bool: invasion state
+        """
+
         if self.rect.bottom == 800:
             return True
         else:
             return False
 
     def death(self):
+        """Verify knight death
+
+        Returns:
+            bool: death state
+        """
+
         if self.life <= 0:
             return True
         else:
@@ -167,7 +267,31 @@ class Knight:
 
 
 class Bishop:
+    """Bishop Enemy
+
+    Attributes:
+        screen: pygame.Surface
+        color: int
+        image: pygame.Surface
+        rect: pygame.Rect
+        screen_rect: pygame.Rect
+        centerx: int
+        bottom: int
+        life: int
+        velocity: int
+    """
+
     def __init__(self, screen, color, center, velocity, life):
+        """Knight Initialize
+
+        Args:
+            screen (pygame.Surface): game screen
+            color (int): color number
+            center (int): horizontal center position of image
+            velocity (int): velocity of bishop
+            life (int): life amount
+        """
+
         self.screen = screen
         self.color = color
 
@@ -192,12 +316,20 @@ class Bishop:
         self.velocity = velocity
 
     def blitme(self):
+        """Show image of bishop"""
+
         self.screen.blit(self.image, self.rect)
 
         for life in self.lifes:
             life.blitme()
 
     def move(self, velocity):
+        """Move Bishop
+
+        Args:
+            velocity (int): velocity of bishop
+        """
+
         if velocity % self.velocity == 0:
             self.rect.bottom += 1
 
@@ -205,6 +337,12 @@ class Bishop:
                 life.rect.bottom += 1
 
     def colision(self, ship):
+        """Verify colision in bullets or ship
+
+        Args:
+            ship (Ship): ship controlled by user
+        """
+
         if ship.bullet.moving:
             if (
                 self.rect.centerx - 45
@@ -219,12 +357,24 @@ class Bishop:
                     ship.bullet.moving = False
 
     def invade(self):
+        """Verify invasion by bishop
+
+        Returns:
+            bool: invasion state
+        """
+
         if self.rect.bottom == 800:
             return True
         else:
             return False
 
     def death(self):
+        """Verify bishop death
+
+        Returns:
+            bool: death state
+        """
+
         if self.life <= 0:
             return True
         else:
