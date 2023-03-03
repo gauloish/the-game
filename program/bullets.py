@@ -22,7 +22,7 @@ class Bullet:
         velocity: int
     """
 
-    def __init__(self, screen, center, bottom):
+    def __init__(self, screen: pygame.Surface, center: int, bottom: int) -> None:
         """Initialize Bullet
 
         Args:
@@ -45,12 +45,12 @@ class Bullet:
 
         self.velocity = 1
 
-    def blitme(self):
+    def blitme(self) -> None:
         """Show Image of Bullet"""
 
         self.screen.blit(self.image, self.rect)
 
-    def update(self, center, bottom):
+    def update(self, center: int, bottom: int) -> None:
         """Update Bullet Position
 
         Args:
