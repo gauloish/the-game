@@ -20,6 +20,7 @@ class Settings:
 
         self.width = 1200
         self.height = 800
+        self.delay = 50
 
         self.back = [230, 230, 230]
 
