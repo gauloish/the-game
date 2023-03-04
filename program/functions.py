@@ -338,8 +338,6 @@ def keydownEventLead(event: Event, ship: Ship, background: Background) -> None:
         background (Background): background canvas
     """
 
-    print(type(event))
-
     if event.key in [pygame.K_RIGHT, pygame.K_d]:
         ship.moving_right = True
     if event.key in [pygame.K_LEFT, pygame.K_a]:
