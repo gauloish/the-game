@@ -1,8 +1,3 @@
-""" Bullets
-
-Class Bullet to emulate a bullet with physics and a sprint
-"""
-
 import pygame
 
 from .utils import resolve
