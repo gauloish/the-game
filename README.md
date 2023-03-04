@@ -11,7 +11,7 @@ A like Space Invaders game.
 
 Controls
 
-[alt text](https://github.com/matheus-moreno/the-game/blob/main/images/elements/options/controls/controls.png)
+![](https://github.com/matheus-moreno/the-game/blob/main/images/elements/options/controls/controls.png)
 
 ## Run Game
 
