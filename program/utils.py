@@ -4,7 +4,7 @@ from os.path import join
 from pathlib import Path
 
 
-def getPath(path: str) -> str:
+def resolve(path: str) -> str:
     """Get and resolve path
 
     Args:
