@@ -12,7 +12,7 @@ from .enemies import Pawn, Knight, Bishop
 ######################################Start######################################
 
 
-def checkEventsInitial(initial: Initial, background: Background) -> None:
+def checkInitialEvents(initial: Initial, background: Background) -> None:
     """Verify events in initial canvas
 
     Args:
@@ -41,7 +41,7 @@ def checkEventsInitial(initial: Initial, background: Background) -> None:
                 background.on = True
 
 
-def updateScreenInitial(
+def updateInitialScreen(
     settings: Settings, screen: Surface, background: Background, initial: Initial
 ) -> None:
     """Update initial canvas
@@ -68,7 +68,7 @@ def updateScreenInitial(
 #####################################Options#####################################
 
 
-def checkEventsOptions(options: Options, background: Background) -> None:
+def checkOptionsEvents(options: Options, background: Background) -> None:
     """Verify events in options canvas
 
     Args:
@@ -101,7 +101,7 @@ def checkEventsOptions(options: Options, background: Background) -> None:
                 background.on = True
 
 
-def updateScreenOptions(
+def updateOptionsScreen(
     settings: Settings, screen: Surface, background: Background, options: Options
 ) -> None:
     """Update options canvas
@@ -132,7 +132,7 @@ def updateScreenOptions(
 ###################################Ship Choose###################################
 
 
-def checkEventsShips(ships: Ships, background: Background) -> None:
+def checkShipsEvents(ships: Ships, background: Background) -> None:
     """Verify events in ships canvas
 
     Args:
@@ -160,7 +160,7 @@ def checkEventsShips(ships: Ships, background: Background) -> None:
                 background.on = True
 
 
-def updateScreenShips(
+def updateShipsScreen(
     settings: Settings, screen: Surface, background: Background, ships: Ships
 ) -> None:
     """Update ships canvas
@@ -182,7 +182,7 @@ def updateScreenShips(
 ##################################Level Choose##################################
 
 
-def checkEventsLevel(level: Level, background: Background) -> None:
+def checkLevelEvents(level: Level, background: Background) -> None:
     """Verify events in ships canvas
 
     Args:
@@ -208,7 +208,7 @@ def checkEventsLevel(level: Level, background: Background) -> None:
                 background.on = True
 
 
-def updateScreenLevel(
+def updateLevelScreen(
     settings: Settings, screen: Surface, background: Background, level: Level
 ) -> None:
     """Update level canvas
@@ -239,7 +239,7 @@ def updateScreenLevel(
 ####################################Controls####################################
 
 
-def checkEventsControls(controls: Controls, background: Background) -> None:
+def checkControlsEvents(controls: Controls, background: Background) -> None:
     """Verify events in control canvas
 
     Args:
@@ -259,7 +259,7 @@ def checkEventsControls(controls: Controls, background: Background) -> None:
                 background.on = True
 
 
-def updateScreenControls(
+def updateControlsScreen(
     settings: Settings,
     screen: Surface,
     background: Background,
@@ -283,7 +283,7 @@ def updateScreenControls(
 #####################################Count#####################################
 
 
-def updateScreenCount(
+def updateCountScreen(
     settings: Settings,
     screen: Surface,
     background: Background,
@@ -309,7 +309,7 @@ def updateScreenCount(
 ######################################Game######################################
 
 
-def checkEventsLead(ship: Ship, background: Background) -> None:
+def checkLeadEvents(ship: Ship, background: Background) -> None:
     """Verify events in lead canvas
 
     Args:
@@ -322,12 +322,12 @@ def checkEventsLead(ship: Ship, background: Background) -> None:
             sys.exit()
 
         elif event.type == pygame.KEYDOWN:
-            keydownEventLead(event, ship, background)
+            keydownLeadEvent(event, ship, background)
         elif event.type == pygame.KEYUP:
-            keyupEventLead(event, ship)
+            keyupLeadEvent(event, ship)
 
 
-def keydownEventLead(event: Event, ship: Ship, background: Background) -> None:
+def keydownLeadEvent(event: Event, ship: Ship, background: Background) -> None:
     """Verify keydown events in lead canvas
 
     Args:
@@ -349,7 +349,7 @@ def keydownEventLead(event: Event, ship: Ship, background: Background) -> None:
         background.on = True
 
 
-def keyupEventLead(event: Event, ship: Ship) -> None:
+def keyupLeadEvent(event: Event, ship: Ship) -> None:
     """Verify keyup events in lead canvas
 
     Args:
@@ -363,7 +363,7 @@ def keyupEventLead(event: Event, ship: Ship) -> None:
         ship.moving_left = False
 
 
-def updateScreenLead(
+def updateLeadScreen(
     settings: Settings,
     screen: Surface,
     background: Background,
