@@ -1,27 +1,27 @@
 import pygame
 
-from .functions import getPath
+from .utils import resolve
 from .life import Life
 from .ship import Ship
 
 colors_pawn = {
-    0: getPath("images/enemies/pawn/pawn_blue.png"),
-    1: getPath("images/enemies/pawn/pawn_pink.png"),
-    2: getPath("images/enemies/pawn/pawn_yellow.png"),
+    0: resolve("images/enemies/pawn/pawn_blue.png"),
+    1: resolve("images/enemies/pawn/pawn_pink.png"),
+    2: resolve("images/enemies/pawn/pawn_yellow.png"),
 }
 
 colors_knight = {
-    0: getPath("images/enemies/knight/knight_blue.png"),
-    1: getPath("images/enemies/knight/knight_green.png"),
-    2: getPath("images/enemies/knight/knight_red.png"),
-    3: getPath("images/enemies/knight/knight_yellow.png"),
+    0: resolve("images/enemies/knight/knight_blue.png"),
+    1: resolve("images/enemies/knight/knight_green.png"),
+    2: resolve("images/enemies/knight/knight_red.png"),
+    3: resolve("images/enemies/knight/knight_yellow.png"),
 }
 
 colors_bishop = {
-    0: getPath("images/enemies/bishop/bishop_blue.png"),
-    1: getPath("images/enemies/bishop/bishop_green.png"),
-    2: getPath("images/enemies/bishop/bishop_pink.png"),
-    3: getPath("images/enemies/bishop/bishop_purple.png"),
+    0: resolve("images/enemies/bishop/bishop_blue.png"),
+    1: resolve("images/enemies/bishop/bishop_green.png"),
+    2: resolve("images/enemies/bishop/bishop_pink.png"),
+    3: resolve("images/enemies/bishop/bishop_purple.png"),
 }
 
 
