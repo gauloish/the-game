@@ -43,6 +43,7 @@ def run():
     end = End(screen)
 
     while True:
+        settings.back = [230, 230, 230]
         background.on = True
 
         # Start Screen
