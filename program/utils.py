@@ -21,10 +21,10 @@ def resolve(path: str) -> str:
     return join(Path.cwd(), path)
 
 
-def wait(milliseconds: int) -> None:
-    """Wait milliseconds
+def wait(time: int) -> None:
+    """Wait time in milliseconds
 
     Args:
-        milliseconds: int
+        time: int
     """
-    sleep(float(milliseconds) / 1000)
+    sleep(float(time) / 1000)
