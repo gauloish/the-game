@@ -22,6 +22,7 @@ from .settings import Settings
 from .canvas import Background, Initial, Options, Ships, Level, Controls, Count, End
 from .ship import Ship
 from .enemies import Pawn, Knight, Bishop
+from .utils import wait
 
 from random import randint
 
@@ -72,6 +73,8 @@ def run():
                                 ships.back = False
                                 break
 
+                            wait(settings.delay)
+
                     elif options.value == 1:
                         options.state = 0
                         options.value = -1
@@ -84,6 +87,8 @@ def run():
                             if level.back:
                                 level.back = False
                                 break
+
+                            wait(settings.delay)
 
                     elif options.value == 2:
                         options.state = 0
@@ -98,6 +103,8 @@ def run():
                                 controls.back = False
                                 break
 
+                            wait(settings.delay)
+
                     elif options.value == 3:
                         options.state = 0
                         options.value = -1
@@ -105,6 +112,10 @@ def run():
                         initial.state = 0
                         initial.value = -1
                         break
+
+                    wait(settings.delay)
+                wait(settings.delay)
+            wait(settings.delay)
 
         ship = Ship(
             screen,
@@ -152,15 +163,17 @@ def run():
 
         # Count
         for number in range(1, 4):
-            for _ in range(0, 350):
+            for _ in range(0, 20):
                 updateScreenCount(settings, screen, background, count, number)
+
+                wait(settings.delay)
 
         # Game
         for enemy in enemies:
-            velocity = 0
+            steps = 0
 
             while True:
-                if velocity % 100 == 0 and background.on:
+                if steps % 100 == 0 and background.on:
                     if settings.back[0] >= 1:
                         settings.back[0] -= 1
                         settings.back[1] -= 1
@@ -169,7 +182,7 @@ def run():
                 checkEventsLead(screen, ship, background)
 
                 ship.update()
-                enemy.move(velocity)
+                enemy.move(steps)
                 ship.bullet.update(ship.rect.centerx, ship.rect.bottom)
 
                 updateScreenLead(settings, screen, background, ship, enemy)
@@ -187,12 +200,16 @@ def run():
                 if enemy.death():
                     break
 
-                velocity += 1
+                steps += 1
+
+                wait(settings.delay)
 
             if gameOver(defeat):
                 break
 
-        for _ in range(0, 1500):
+        for _ in range(0, 40):
             updateEnd(settings, screen, background, end, defeat)
+
+            wait(settings.delay)
 
         initial.value = -1
