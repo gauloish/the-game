@@ -1,6 +1,6 @@
 import pygame
 
-from .functions import resolve
+from .utils import resolve
 from .life import Life
 from .bullets import Bullet
 
