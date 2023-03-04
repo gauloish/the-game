@@ -2,13 +2,13 @@
 
 A like Space Invaders game.
 
-### Requirements
+## Requirements
 
 **Python**: 3.9.1 or newer
 
 **Pygame**: 2.0.2 or newer
 
-### Controls
+## Controls
 
 ![](https://github.com/matheus-moreno/the-game/blob/main/images/elements/options/controls/controls.png)
 
