@@ -1,6 +1,6 @@
 import pygame
 
-from .functions import getPath
+from .utils import resolve
 
 
 class Background:
@@ -25,7 +25,7 @@ class Background:
 
         self.screen = screen
 
-        self.back = pygame.image.load(getPath("images/sky/sky.png"))
+        self.back = pygame.image.load(resolve("images/sky/sky.png"))
 
         self.rect_back = self.back.get_rect()
         self.screen_back = self.screen.get_rect()
@@ -73,12 +73,12 @@ class Initial:
 
         self.screen = screen
 
-        self.initial = pygame.image.load(getPath("images/elements/initial/initial.png"))
+        self.initial = pygame.image.load(resolve("images/elements/initial/initial.png"))
         self.start_select = pygame.image.load(
-            getPath("images/elements/initial/start_select.png")
+            resolve("images/elements/initial/start_select.png")
         )
         self.option_select = pygame.image.load(
-            getPath("images/elements/initial/option_select.png")
+            resolve("images/elements/initial/option_select.png")
         )
 
         self.rect_initial = self.initial.get_rect()
@@ -159,18 +159,18 @@ class Options:
 
         self.screen = screen
 
-        self.option = pygame.image.load(getPath("images/elements/options/options.png"))
+        self.option = pygame.image.load(resolve("images/elements/options/options.png"))
         self.ships_select = pygame.image.load(
-            getPath("images/elements/options/ships_select.png")
+            resolve("images/elements/options/ships_select.png")
         )
         self.level_select = pygame.image.load(
-            getPath("images/elements/options/level_select.png")
+            resolve("images/elements/options/level_select.png")
         )
         self.controls_select = pygame.image.load(
-            getPath("images/elements/options/controls_select.png")
+            resolve("images/elements/options/controls_select.png")
         )
         self.back_select = pygame.image.load(
-            getPath("images/elements/options/back_select.png")
+            resolve("images/elements/options/back_select.png")
         )
 
         self.rect_option = self.option.get_rect()
@@ -255,10 +255,10 @@ class Ships:
         self.screen = screen
 
         self.boxes = pygame.image.load(
-            getPath("images/elements/options/ships/boxes.png")
+            resolve("images/elements/options/ships/boxes.png")
         )
         self.select = pygame.image.load(
-            getPath("images/elements/options/ships/select.png")
+            resolve("images/elements/options/ships/select.png")
         )
 
         self.rect_boxes = self.boxes.get_rect()
@@ -342,19 +342,19 @@ class Level:
         self.screen = screen
 
         self.levels = pygame.image.load(
-            getPath("images/elements/options/level/levels.png")
+            resolve("images/elements/options/level/levels.png")
         )
         self.easy_select = pygame.image.load(
-            getPath("images/elements/options/level/easy_select.png")
+            resolve("images/elements/options/level/easy_select.png")
         )
         self.medium_select = pygame.image.load(
-            getPath("images/elements/options/level/medium_select.png")
+            resolve("images/elements/options/level/medium_select.png")
         )
         self.hard_select = pygame.image.load(
-            getPath("images/elements/options/level/hard_select.png")
+            resolve("images/elements/options/level/hard_select.png")
         )
         self.insane_select = pygame.image.load(
-            getPath("images/elements/options/level/insane_select.png")
+            resolve("images/elements/options/level/insane_select.png")
         )
 
         self.rect_levels = self.levels.get_rect()
@@ -440,7 +440,7 @@ class Controls:
         self.screen = screen
 
         self.cont = pygame.image.load(
-            getPath("images/elements/options/controls/controls.png")
+            resolve("images/elements/options/controls/controls.png")
         )
 
         self.rect_cont = self.cont.get_rect()
@@ -488,9 +488,9 @@ class Count:
 
         self.screen = screen
 
-        self.number_1 = pygame.image.load(getPath("images/elements/start/number_1.png"))
-        self.number_2 = pygame.image.load(getPath("images/elements/start/number_2.png"))
-        self.number_3 = pygame.image.load(getPath("images/elements/start/number_3.png"))
+        self.number_1 = pygame.image.load(resolve("images/elements/start/number_1.png"))
+        self.number_2 = pygame.image.load(resolve("images/elements/start/number_2.png"))
+        self.number_3 = pygame.image.load(resolve("images/elements/start/number_3.png"))
 
         self.rect_number_1 = self.number_1.get_rect()
         self.rect_number_2 = self.number_2.get_rect()
@@ -545,8 +545,8 @@ class End:
 
         self.screen = screen
 
-        self.gameover = pygame.image.load(getPath("images/elements/final/gameover.png"))
-        self.victory = pygame.image.load(getPath("images/elements/final/victory.png"))
+        self.gameover = pygame.image.load(resolve("images/elements/final/gameover.png"))
+        self.victory = pygame.image.load(resolve("images/elements/final/victory.png"))
 
         self.rect_gameover = self.gameover.get_rect()
         self.rect_victory = self.victory.get_rect()
