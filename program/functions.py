@@ -382,9 +382,9 @@ def updateLeadScreen(
 
     screen.fill(settings.back)
     background.blitBack()
-    ship.bullet.blitme()
-    ship.blitme()
-    enemy.blitme()
+    ship.bullet.show()
+    ship.show()
+    enemy.show()
     pygame.display.flip()
 
 

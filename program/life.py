@@ -34,7 +34,7 @@ class Life:
         self.rect.centerx = center
         self.rect.bottom = bottom
 
-    def blitme(self) -> None:
+    def show(self) -> None:
         """Show Image of Life"""
 
         self.screen.blit(self.image, self.rect)

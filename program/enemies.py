@@ -76,13 +76,13 @@ class Pawn:
 
         self.velocity = velocity
 
-    def blitme(self) -> None:
+    def show(self) -> None:
         """Show image of pawn"""
 
         self.screen.blit(self.image, self.rect)
 
         for life in self.lifes:
-            life.blitme()
+            life.show()
 
     def move(self) -> None:
         """Move pawn
@@ -192,13 +192,13 @@ class Knight:
 
         self.velocity = velocity
 
-    def blitme(self) -> None:
+    def show(self) -> None:
         """Show image of knight"""
 
         self.screen.blit(self.image, self.rect)
 
         for life in self.lifes:
-            life.blitme()
+            life.show()
 
     def move(self) -> None:
         """Move knight
@@ -308,13 +308,13 @@ class Bishop:
 
         self.velocity = velocity
 
-    def blitme(self) -> None:
+    def show(self) -> None:
         """Show image of bishop"""
 
         self.screen.blit(self.image, self.rect)
 
         for life in self.lifes:
-            life.blitme()
+            life.show()
 
     def move(self) -> None:
         """Move Bishop

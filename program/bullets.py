@@ -37,7 +37,7 @@ class Bullet:
 
         self.moving = False
 
-    def blitme(self) -> None:
+    def show(self) -> None:
         """Show image of bullet"""
 
         self.screen.blit(self.image, self.rect)

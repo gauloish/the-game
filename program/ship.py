@@ -78,13 +78,13 @@ class Ship:
 
         self.bullet = Bullet(screen, self.rect.centerx, self.rect.bottom)
 
-    def blitme(self) -> None:
+    def show(self) -> None:
         """Show image of ship"""
 
         self.screen.blit(self.image, self.rect)
 
         for life in self.lifes:
-            life.blitme()
+            life.show()
 
     def update(self) -> None:
         """Update ship position"""
