@@ -84,24 +84,17 @@ class Pawn:
         for life in self.lifes:
             life.blitme()
 
-    def move(self, velocity: int) -> None:
+    def move(self) -> None:
         """Move pawn
 
         Args:
             velocity (int): velocity of pawn
         """
 
-        if self.velocity != -1:
-            if velocity % self.velocity == 0:
-                self.rect.bottom += 1
+        self.rect.bottom += self.velocity
 
-                for life in self.lifes:
-                    life.rect.bottom += 1
-        else:
-            self.rect.bottom += 2
-
-            for life in self.lifes:
-                life.rect.bottom += 2
+        for life in self.lifes:
+            life.rect.bottom += self.velocity
 
     def colision(self, ship: Ship) -> None:
         """Verify colision in bullets, ship or back
@@ -130,7 +123,7 @@ class Pawn:
             bool: invasion state
         """
 
-        if self.rect.bottom == 800:
+        if self.rect.bottom >= 800:
             return True
         else:
             return False
@@ -207,24 +200,17 @@ class Knight:
         for life in self.lifes:
             life.blitme()
 
-    def move(self, velocity: int) -> None:
+    def move(self) -> None:
         """Move knight
 
         Args:
             velocity (int): velocity of knight
         """
 
-        if self.velocity != -1:
-            if velocity % self.velocity == 0:
-                self.rect.bottom += 1
+        self.rect.bottom += self.velocity
 
-                for life in self.lifes:
-                    life.rect.bottom += 1
-        else:
-            self.rect.bottom += 2
-
-            for life in self.lifes:
-                life.rect.bottom += 2
+        for life in self.lifes:
+            life.rect.bottom += self.velocity
 
     def colision(self, ship: Ship) -> None:
         """Verify colision in bullets or ship
@@ -253,7 +239,7 @@ class Knight:
             bool: invasion state
         """
 
-        if self.rect.bottom == 800:
+        if self.rect.bottom >= 800:
             return True
         else:
             return False
@@ -330,18 +316,17 @@ class Bishop:
         for life in self.lifes:
             life.blitme()
 
-    def move(self, velocity: int) -> None:
+    def move(self) -> None:
         """Move Bishop
 
         Args:
             velocity (int): velocity of bishop
         """
 
-        if velocity % self.velocity == 0:
-            self.rect.bottom += 1
+        self.rect.bottom += self.velocity
 
-            for life in self.lifes:
-                life.rect.bottom += 1
+        for life in self.lifes:
+            life.rect.bottom += self.velocity
 
     def colision(self, ship: Ship) -> None:
         """Verify colision in bullets or ship
@@ -370,7 +355,7 @@ class Bishop:
             bool: invasion state
         """
 
-        if self.rect.bottom == 800:
+        if self.rect.bottom >= 800:
             return True
         else:
             return False
