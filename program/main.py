@@ -157,8 +157,9 @@ def run():
             for _ in range(0, settings.amounts[level.value()]["bishops"]["amount"])
         ]
 
-        enemies = pawns + knights + bishops
+        rate = settings.amounts[level.value()]["back"]["rate"]
 
+        enemies = pawns + knights + bishops
         defeat = False
 
         count = Count(screen)
@@ -175,7 +176,7 @@ def run():
             steps = 0
 
             while True:
-                if steps % 50 == 0 and background.on:
+                if steps % rate == 0 and background.on:
                     if settings.back[0] >= 1:
                         settings.back[0] -= 1
                         settings.back[1] -= 1
