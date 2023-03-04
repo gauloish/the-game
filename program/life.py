@@ -1,8 +1,3 @@
-""" Life
-
-Class Life to emulate life to entities with a sprint
-"""
-
 import pygame
 
 from .utils import resolve
