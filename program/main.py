@@ -202,8 +202,6 @@ def run():
 
                 steps += 1
 
-                wait(2)
-
             if gameOver(defeat):
                 break
 
