@@ -1,15 +1,15 @@
 import pygame
 
-from .functions import getPath
+from .functions import resolve
 from .life import Life
 from .bullets import Bullet
 
 colors = {
-    0: getPath("images/ships/ship_red.png"),
-    1: getPath("images/ships/ship_pink.png"),
-    2: getPath("images/ships/ship_purple.png"),
-    3: getPath("images/ships/ship_blue.png"),
-    4: getPath("images/ships/ship_green.png"),
+    0: resolve("images/ships/ship_red.png"),
+    1: resolve("images/ships/ship_pink.png"),
+    2: resolve("images/ships/ship_purple.png"),
+    3: resolve("images/ships/ship_blue.png"),
+    4: resolve("images/ships/ship_green.png"),
 }
 
 
