@@ -14,7 +14,6 @@ class Bullet:
         centerx: int
         bottom: int
         moving: bool
-        velocity: int
     """
 
     def __init__(self, screen: pygame.Surface, center: int, bottom: int) -> None:
@@ -38,23 +37,22 @@ class Bullet:
 
         self.moving = False
 
-        self.velocity = 1
-
     def blitme(self) -> None:
         """Show image of bullet"""
 
         self.screen.blit(self.image, self.rect)
 
-    def update(self, center: int, bottom: int) -> None:
+    def update(self, center: int, bottom: int, velocity: int) -> None:
         """Update bullet position
 
         Args:
             center (int): horizontal center position of image
             bottom (int): vertical bottom position of image
+            velocity (int): bullet velocity
         """
 
         if self.moving:
-            self.rect.bottom -= self.velocity
+            self.rect.bottom -= velocity + 6
         else:
             self.rect.centerx = center
             self.rect.bottom = bottom - 72
