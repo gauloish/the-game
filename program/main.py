@@ -1,19 +1,19 @@
 import pygame
 
 from .functions import (
-    checkEventsInitial,
-    updateScreenInitial,
-    checkEventsOptions,
-    updateScreenOptions,
-    checkEventsShips,
-    updateScreenShips,
-    checkEventsLevel,
-    updateScreenLevel,
-    checkEventsControls,
-    updateScreenControls,
-    updateScreenCount,
-    checkEventsLead,
-    updateScreenLead,
+    checkInitialEvents,
+    updateInitialScreen,
+    checkOptionsEvents,
+    updateOptionsScreen,
+    checkShipsEvents,
+    updateShipsScreen,
+    checkLevelEvents,
+    updateLevelScreen,
+    checkControlsEvents,
+    updateControlsScreen,
+    updateCountScreen,
+    checkLeadEvents,
+    updateLeadScreen,
     updateEnd,
     gameOver,
 )
@@ -51,16 +51,16 @@ def run():
 
         # Start Screen
         while True:
-            checkEventsInitial(initial, background)
-            updateScreenInitial(settings, screen, background, initial)
+            checkInitialEvents(initial, background)
+            updateInitialScreen(settings, screen, background, initial)
 
             if initial.value == 0:
                 break
             elif initial.value == 1:
                 # Options Screen
                 while True:
-                    checkEventsOptions(options, background)
-                    updateScreenOptions(settings, screen, background, options)
+                    checkOptionsEvents(options, background)
+                    updateOptionsScreen(settings, screen, background, options)
 
                     if options.value == 0:
                         options.state = 0
@@ -68,8 +68,8 @@ def run():
 
                         # Ship Choose
                         while True:
-                            checkEventsShips(ships, background)
-                            updateScreenShips(settings, screen, background, ships)
+                            checkShipsEvents(ships, background)
+                            updateShipsScreen(settings, screen, background, ships)
 
                             if ships.back:
                                 ships.back = False
@@ -83,8 +83,8 @@ def run():
 
                         # Level Choose
                         while True:
-                            checkEventsLevel(level, background)
-                            updateScreenLevel(settings, screen, background, level)
+                            checkLevelEvents(level, background)
+                            updateLevelScreen(settings, screen, background, level)
 
                             if level.back:
                                 level.back = False
@@ -98,8 +98,8 @@ def run():
 
                         # Controls Visualizer
                         while True:
-                            checkEventsControls(controls, background)
-                            updateScreenControls(settings, screen, background, controls)
+                            checkControlsEvents(controls, background)
+                            updateControlsScreen(settings, screen, background, controls)
 
                             if controls.back:
                                 controls.back = False
@@ -166,7 +166,7 @@ def run():
         # Count
         for number in range(1, 4):
             for _ in range(0, 20):
-                updateScreenCount(settings, screen, background, count, number)
+                updateCountScreen(settings, screen, background, count, number)
 
                 wait(settings.delay)
 
@@ -181,13 +181,13 @@ def run():
                         settings.back[1] -= 1
                         settings.back[2] -= 1
 
-                checkEventsLead(ship, background)
+                checkLeadEvents(ship, background)
 
                 ship.update()
                 enemy.move(steps)
                 ship.bullet.update(ship.rect.centerx, ship.rect.bottom)
 
-                updateScreenLead(settings, screen, background, ship, enemy)
+                updateLeadScreen(settings, screen, background, ship, enemy)
 
                 enemy.colision(ship)
 
