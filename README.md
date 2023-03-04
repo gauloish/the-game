@@ -1,13 +1,20 @@
 # The Game
 
-This game is a project that I make using python and pygame.
+A like Space Invaders game.
 
-#### Softwares
+#### Requirements
 
-I used Python 3.9.1 and Pygame 2.0.2
+**Python**: 3.9.1 or newer
+**Pygame**: 2.0.2 or newer
+
+#### Controls
+
+Controls
+
+[alt text](https://github.com/matheus-moreno/the-game/blob/main/images/elements/options/controls/controls.png)
 
 ## Run Game
 
-Run 'TheGame.pyw'
+Run 'the-game.pyw'
 
 Enjoy fun.
