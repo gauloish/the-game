@@ -13,20 +13,15 @@ from .functions import (
     updateScreenControls,
     updateScreenCount,
     checkEventsLead,
-    # keydownEventLead,
-    # keyupEventLead,
     updateScreenLead,
     updateEnd,
-    gameover,
+    gameOver,
 )
 
 from .settings import Settings
 from .canvas import Background, Initial, Options, Ships, Level, Controls, Count, End
 from .ship import Ship
-from .enemies import Pawn, Knight, Pishop
-
-# from .bullets import Bullet
-# from .life import Life
+from .enemies import Pawn, Knight, Bishop
 
 from random import randint
 
@@ -39,158 +34,148 @@ def run():
 
     pygame.display.set_caption(settings.display)
 
-    sky = Background(screen)
-    inic = Initial(screen)
+    background = Background(screen)
+    initial = Initial(screen)
     options = Options(screen)
     ships = Ships(screen)
     level = Level(screen)
-    control = Controls(screen)
+    controls = Controls(screen)
     end = End(screen)
 
     while True:
-        settings.back[0], settings.back[1], settings.back[2] = 200, 200, 200
-
-        sky.on = True
+        background.on = True
 
         # Start Screen
         while True:
-            checkEventsInitial(inic, sky)
-            updateScreenInitial(settings, screen, sky, inic)
+            checkEventsInitial(initial, background)
+            updateScreenInitial(settings, screen, background, initial)
 
-            if inic.val == 0:
+            if initial.value == 0:
                 break
-            elif inic.val == 1:
+            elif initial.value == 1:
                 # Options Screen
                 while True:
-                    checkEventsOptions(options, sky)
-                    updateScreenOptions(settings, screen, sky, options)
+                    checkEventsOptions(options, background)
+                    updateScreenOptions(settings, screen, background, options)
 
-                    if options.val == 0:
+                    if options.value == 0:
                         options.state = 0
-                        options.val = -1
+                        options.value = -1
 
                         # Ship Choose
                         while True:
-                            checkEventsShips(ships, sky)
-                            updateScreenShips(settings, screen, sky, ships)
+                            checkEventsShips(ships, background)
+                            updateScreenShips(settings, screen, background, ships)
 
                             if ships.back:
                                 ships.back = False
                                 break
 
-                    elif options.val == 1:
+                    elif options.value == 1:
                         options.state = 0
-                        options.val = -1
+                        options.value = -1
 
                         # Level Choose
                         while True:
-                            checkEventsLevel(level, sky)
-                            updateScreenLevel(settings, screen, sky, level)
+                            checkEventsLevel(level, background)
+                            updateScreenLevel(settings, screen, background, level)
 
                             if level.back:
                                 level.back = False
                                 break
 
-                    elif options.val == 2:
+                    elif options.value == 2:
                         options.state = 0
-                        options.val = -1
+                        options.value = -1
 
                         # Controls Visualizer
                         while True:
-                            checkEventsControls(control, sky)
-                            updateScreenControls(settings, screen, sky, control)
+                            checkEventsControls(controls, background)
+                            updateScreenControls(settings, screen, background, controls)
 
-                            if control.back:
-                                control.back = False
+                            if controls.back:
+                                controls.back = False
                                 break
 
-                    elif options.val == 3:
+                    elif options.value == 3:
                         options.state = 0
-                        options.val = -1
+                        options.value = -1
 
-                        inic.state = 0
-                        inic.val = -1
+                        initial.state = 0
+                        initial.value = -1
                         break
 
-        # Creating Objects
-        diff = [
-            [10, 8, 6, 2, 2, 2, 1, 1, 1, 1, 1],
-            [12, 10, 8, 1, 2, 2, 1, 1, 2, 1, 1],
-            [14, 12, 10, 1, 1, 2, 1, 2, 2, 1, 3],
-            [16, 14, 12, -1, -1, 1, 2, 2, 2, 2, 5],
-        ]  # [pawns, knights, pishops, vel_pawns, vel_knights, vel_pishops, lif_pawns, lif_knights, lif_pishops, vel, life]
-
-        lel = level.lel
-
-        ship = Ship(screen, ships.color, diff[lel][9], diff[lel][10])
+        ship = Ship(
+            screen,
+            ships.color,
+            settings.amounts[level.value()]["ship"]["velocity"],
+            settings.amounts[level.value()]["ship"]["life"],
+        )
 
         pawns = [
             Pawn(
                 screen,
                 randint(0, 2),
                 randint(400, 800),
-                diff[lel][3],
-                diff[lel][6],
-                ship,
+                settings.amounts[level.value()]["pawns"]["velocity"],
+                settings.amounts[level.value()]["pawns"]["life"],
             )
-            for _ in range(0, diff[lel][0])
+            for _ in range(0, settings.amounts[level.value()]["pawns"]["amount"])
         ]
         knights = [
             Knight(
                 screen,
                 randint(0, 3),
                 randint(200, 1000),
-                diff[lel][4],
-                diff[lel][7],
-                ship,
+                settings.amounts[level.value()]["knights"]["velocity"],
+                settings.amounts[level.value()]["knights"]["life"],
             )
-            for _ in range(0, diff[lel][1])
+            for _ in range(0, settings.amounts[level.value()]["knights"]["amount"])
         ]
-        pishops = [
-            Pishop(
+        bishops = [
+            Bishop(
                 screen,
                 randint(0, 3),
                 randint(100, 1100),
-                diff[lel][5],
-                diff[lel][8],
-                ship,
+                settings.amounts[level.value()]["bishops"]["velocity"],
+                settings.amounts[level.value()]["bishops"]["life"],
             )
-            for _ in range(0, diff[lel][2])
+            for _ in range(0, settings.amounts[level.value()]["bishops"]["amount"])
         ]
 
-        enemies = pawns + knights + pishops
+        enemies = pawns + knights + bishops
 
         defeat = False
 
         count = Count(screen)
 
         # Count
-        for num in range(1, 4):
+        for number in range(1, 4):
             for _ in range(0, 350):
-                updateScreenCount(settings, screen, sky, count, num)
+                updateScreenCount(settings, screen, background, count, number)
 
         # Game
-        for enemie in enemies:
-            vel = 0
+        for enemy in enemies:
+            velocity = 0
 
             while True:
-                if vel % 100 == 0 and sky.on:
+                if velocity % 100 == 0 and background.on:
                     if settings.back[0] >= 1:
                         settings.back[0] -= 1
                         settings.back[1] -= 1
                         settings.back[2] -= 1
 
-                checkEventsLead(screen, ship, sky)
+                checkEventsLead(screen, ship, background)
 
                 ship.update()
-                enemie.move(vel)
+                enemy.move(velocity)
                 ship.bullet.update(ship.rect.centerx, ship.rect.bottom)
 
-                updateScreenLead(settings, screen, sky, ship, enemie)
+                updateScreenLead(settings, screen, background, ship, enemy)
 
-                enemie.colision(ship)
+                enemy.colision(ship)
 
-                if enemie.invade():
+                if enemy.invade():
                     ship.hit()
 
                     if ship.life == 0:
@@ -198,15 +183,15 @@ def run():
 
                     break
 
-                if enemie.death():
+                if enemy.death():
                     break
 
-                vel += 1
+                velocity += 1
 
-            if gameover(defeat):
+            if gameOver(defeat):
                 break
 
         for _ in range(0, 1500):
-            updateEnd(settings, screen, sky, end, defeat)
+            updateEnd(settings, screen, background, end, defeat)
 
-        inic.val = -1
+        initial.value = -1
