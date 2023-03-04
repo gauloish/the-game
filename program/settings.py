@@ -1,9 +1,3 @@
-""" Settings
-
-General settings to Game
-"""
-
-
 class Settings:
     """Settings to Game
 
