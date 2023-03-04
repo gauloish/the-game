@@ -1,6 +1,9 @@
 import sys
 import pygame
 
+from pygame import Surface
+from pygame.event import Event
+
 from .settings import Settings
 from .canvas import Background, Initial, Options, Ships, Level, Controls, Count, End
 from .ship import Ship
@@ -39,13 +42,13 @@ def checkEventsInitial(initial: Initial, background: Background) -> None:
 
 
 def updateScreenInitial(
-    settings: Settings, screen: pygame.Surface, background: Background, initial: Initial
+    settings: Settings, screen: Surface, background: Background, initial: Initial
 ) -> None:
     """Update initial canvas
 
     Args:
         settings (Settings): screen settings
-        screen (pygame.Surface): game screen
+        screen (Surface): game screen
         background (Background): background canvas
         initial (Initial): initial canvas
     """
@@ -99,13 +102,13 @@ def checkEventsOptions(options: Options, background: Background) -> None:
 
 
 def updateScreenOptions(
-    settings: Settings, screen: pygame.Surface, background: Background, options: Options
+    settings: Settings, screen: Surface, background: Background, options: Options
 ) -> None:
     """Update options canvas
 
     Args:
         settings (Settings): screen settings
-        screen (pygame.Surface): game screen
+        screen (Surface): game screen
         background (Background): background canvas
         initial (Initial): options canvas
     """
@@ -158,13 +161,13 @@ def checkEventsShips(ships: Ships, background: Background) -> None:
 
 
 def updateScreenShips(
-    settings: Settings, screen: pygame.Surface, background: Background, ships: Ships
+    settings: Settings, screen: Surface, background: Background, ships: Ships
 ) -> None:
     """Update ships canvas
 
     Args:
         settings (Settings): screen settings
-        screen (pygame.Surface): game screen
+        screen (Surface): game screen
         background (Background): background canvas
         ships (Ships): ships canvas
     """
@@ -206,13 +209,13 @@ def checkEventsLevel(level: Level, background: Background) -> None:
 
 
 def updateScreenLevel(
-    settings: Settings, screen: pygame.Surface, background: Background, level: Level
+    settings: Settings, screen: Surface, background: Background, level: Level
 ) -> None:
     """Update level canvas
 
     Args:
         settings (Settings): screen settings
-        screen (pygame.Surface): game screen
+        screen (Surface): game screen
         background (Background): background canvas
         level (Level): level canvas
     """
@@ -258,7 +261,7 @@ def checkEventsControls(controls: Controls, background: Background) -> None:
 
 def updateScreenControls(
     settings: Settings,
-    screen: pygame.Surface,
+    screen: Surface,
     background: Background,
     controls: Controls,
 ) -> None:
@@ -266,7 +269,7 @@ def updateScreenControls(
 
     Args:
         settings (Settings): screen settings
-        screen (pygame.Surface): game screen
+        screen (Surface): game screen
         background (Background): background canvas
         controls (Constrols): controls canvas
     """
@@ -282,7 +285,7 @@ def updateScreenControls(
 
 def updateScreenCount(
     settings: Settings,
-    screen: pygame.Surface,
+    screen: Surface,
     background: Background,
     count: Count,
     number: int,
@@ -291,7 +294,7 @@ def updateScreenCount(
 
     Args:
         settings (Settings): screen settings
-        screen (pygame.Surface): game screen
+        screen (Surface): game screen
         background (Background): background canvas
         count (Count): count canvas
         number (int): count number
@@ -306,11 +309,11 @@ def updateScreenCount(
 ######################################Game######################################
 
 
-def checkEventsLead(screen: pygame.Surface, ship: Ship, background: Background) -> None:
+def checkEventsLead(screen: Surface, ship: Ship, background: Background) -> None:
     """Verify events in lead canvas
 
     Args:
-        screen (pygame.Surface): game screen
+        screen (Surface): game screen
         ship (Ship): ship canvas
         background (Background): background canvas
     """
@@ -325,15 +328,17 @@ def checkEventsLead(screen: pygame.Surface, ship: Ship, background: Background) 
             keyupEventLead(event, ship)
 
 
-def keydownEventLead(event, ship: Ship, background: Background) -> None:
+def keydownEventLead(event: Event, ship: Ship, background: Background) -> None:
     """Verify keydown events in lead canvas
 
     Args:
-        screen (pygame.Surface): game screen
+        screen (Surface): game screen
         event (pygame.Event): event
         ship (Ship): ship canvas
         background (Background): background canvas
     """
+
+    print(type(event))
 
     if event.key in [pygame.K_RIGHT, pygame.K_d]:
         ship.moving_right = True
@@ -347,7 +352,7 @@ def keydownEventLead(event, ship: Ship, background: Background) -> None:
         background.on = True
 
 
-def keyupEventLead(event, ship: Ship) -> None:
+def keyupEventLead(event: Event, ship: Ship) -> None:
     """Verify keyup events in lead canvas
 
     Args:
@@ -363,7 +368,7 @@ def keyupEventLead(event, ship: Ship) -> None:
 
 def updateScreenLead(
     settings: Settings,
-    screen: pygame.Surface,
+    screen: Surface,
     background: Background,
     ship: Ship,
     enemy: Pawn | Knight | Bishop,
@@ -372,7 +377,7 @@ def updateScreenLead(
 
     Args:
         settings (Settings): screen settings
-        screen (pygame.Surface): game screen
+        screen (Surface): game screen
         background (Background): background canvas
         ship (Ship): ship canvas
         enemy (Pawn | Knight | Bishop): enemy canvas
@@ -404,7 +409,7 @@ def gameOver(defeat: bool) -> bool:
 
 def updateEnd(
     settings: Settings,
-    screen: pygame.Surface,
+    screen: Surface,
     background: Background,
     end: End,
     defeat: bool,
@@ -413,7 +418,7 @@ def updateEnd(
 
     Args:
         settings (Settings): screen settings
-        screen (pygame.Surface): game screen
+        screen (Surface): game screen
         background (Background): background canvas
         end (End): end canvas
         defeat (bool): player defeat
