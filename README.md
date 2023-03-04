@@ -2,6 +2,8 @@
 
 A like Space Invaders game.
 
+![](https://github.com/matheus-moreno/the-game/blob/main/images/the-game.png)
+
 ## Requirements
 
 **Python**: 3.9.1 or newer
