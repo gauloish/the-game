@@ -5,7 +5,7 @@ Class Life to emulate life to entities with a sprint
 
 import pygame
 
-from .functions import getPath
+from .utils import resolve
 
 
 class Life:
@@ -31,7 +31,7 @@ class Life:
 
         self.screen = screen
 
-        self.image = pygame.image.load(getPath("images/life/life.png"))
+        self.image = pygame.image.load(resolve("images/life/life.png"))
 
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
