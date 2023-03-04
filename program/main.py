@@ -179,7 +179,7 @@ def run():
                         settings.back[1] -= 1
                         settings.back[2] -= 1
 
-                checkEventsLead(screen, ship, background)
+                checkEventsLead(ship, background)
 
                 ship.update()
                 enemy.move(steps)
@@ -202,7 +202,7 @@ def run():
 
                 steps += 1
 
-                wait(settings.delay)
+                # wait(settings.delay)
 
             if gameOver(defeat):
                 break
