@@ -28,6 +28,8 @@ from random import randint
 
 
 def run():
+    """run game"""
+
     pygame.init()
 
     settings = Settings()
