@@ -10,6 +10,7 @@ class Settings:
     Attributes:
         width: int
         height: int
+        delay: int
         back: list[int]
         display: str
         amounts: dict[str, dict[str, dict[str, int]]]
