@@ -299,7 +299,7 @@ class Ships:
 
 
 class Level:
-    """Levels
+    """Level
 
     Attributes:
         screen: pygame.Surface
@@ -328,7 +328,7 @@ class Level:
         bottom: int
         bottom: int
         bottom: int
-        lel: int
+        number: int
         back: bool
     """
 
@@ -381,8 +381,15 @@ class Level:
         self.rect_hard_select.bottom = 460
         self.rect_insane_select.bottom = 542
 
-        self.lel = 0
+        self.number = 0
         self.back = False
+
+    def value(self) -> str:
+        """Return level value"""
+
+        levels = ["easy", "medium", "hard", "insane"]
+
+        return levels[self.number]
 
     def blitLevels(self) -> None:
         """Show levels options"""
