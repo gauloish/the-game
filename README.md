@@ -2,7 +2,9 @@
 
 A like Space Invaders game.
 
-![](https://github.com/matheus-moreno/the-game/blob/main/images/cover.png)
+<p align="center">
+  <img src="https://github.com/matheus-moreno/the-game/blob/main/images/cover.png"/>
+</p>
 
 ## Requirements
 
