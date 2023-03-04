@@ -5,7 +5,7 @@ Class Bullet to emulate a bullet with physics and a sprint
 
 import pygame
 
-from .functions import getPath
+from .utils import resolve
 
 
 class Bullet:
@@ -33,7 +33,7 @@ class Bullet:
 
         self.screen = screen
 
-        self.image = pygame.image.load(getPath("images/munition/bullet.png"))
+        self.image = pygame.image.load(resolve("images/munition/bullet.png"))
 
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
