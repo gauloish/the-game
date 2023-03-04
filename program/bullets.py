@@ -52,7 +52,7 @@ class Bullet:
         """
 
         if self.moving:
-            self.rect.bottom -= velocity + 6
+            self.rect.bottom -= 2 * velocity
         else:
             self.rect.centerx = center
             self.rect.bottom = bottom - 72
