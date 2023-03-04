@@ -3,10 +3,15 @@ import pygame
 from os.path import join
 from pathlib import Path
 
+from .settings import Settings
+from .canvas import Background, Initial, Options, Ships, Level, Controls, Count, End
+from .ship import Ship
+from .enemies import Pawn, Knight, Bishop
+
 ####################################processing###################################
 
 
-def getPath(path):
+def getPath(path: str) -> str:
     """Get and resolve path
 
     Args:
@@ -25,12 +30,12 @@ def getPath(path):
 ######################################Start######################################
 
 
-def checkEventsInitial(initial, sky):
+def checkEventsInitial(initial: Initial, background: Background) -> None:
     """Verify events in initial canvas
 
     Args:
         initial (Initial): initial canvas
-        sky (Background): background canvas
+        background (Background): background canvas
     """
 
     for event in pygame.event.get():
@@ -51,27 +56,29 @@ def checkEventsInitial(initial, sky):
                     initial.value = 1
 
             if event.key in [pygame.K_RSHIFT, pygame.K_LSHIFT]:
-                sky.on = True
+                background.on = True
 
 
-def updateScreenInitial(settings, screen, sky, initial):
+def updateScreenInitial(
+    settings: Settings, screen: pygame.Surface, background: Background, initial: Initial
+) -> None:
     """Update initial canvas
 
     Args:
         settings (Settings): screen settings
         screen (pygame.Surface): game screen
-        sky (Background): background canvas
+        background (Background): background canvas
         initial (Initial): initial canvas
     """
 
     screen.fill(settings.back)
-    sky.blitBack()
+    background.blitBack()
     initial.blitInitial()
 
     if initial.state == 0:
-        initial.blitStartSelec()
+        initial.blitStartSelect()
     elif initial.state == 1:
-        initial.blitOptionSelec()
+        initial.blitOptionSelect()
 
     pygame.display.flip()
 
@@ -79,12 +86,12 @@ def updateScreenInitial(settings, screen, sky, initial):
 #####################################Options#####################################
 
 
-def checkEventsOptions(options, sky):
+def checkEventsOptions(options: Options, background: Background) -> None:
     """Verify events in options canvas
 
     Args:
         options (Options): options canvas
-        sky (Background): background canvas
+        background (Background): background canvas
     """
 
     for event in pygame.event.get():
@@ -109,31 +116,33 @@ def checkEventsOptions(options, sky):
                     options.value = 3
 
             if event.key in [pygame.K_RSHIFT, pygame.K_LSHIFT]:
-                sky.on = True
+                background.on = True
 
 
-def updateScreenOptions(settings, screen, sky, options):
+def updateScreenOptions(
+    settings: Settings, screen: pygame.Surface, background: Background, options: Options
+) -> None:
     """Update options canvas
 
     Args:
         settings (Settings): screen settings
         screen (pygame.Surface): game screen
-        sky (Background): background canvas
+        background (Background): background canvas
         initial (Initial): options canvas
     """
 
     screen.fill(settings.back)
-    sky.blitBack()
+    background.blitBack()
     options.blitOptions()
 
     if options.state == 0:
-        options.blitShipSelec()
+        options.blitShipSelect()
     elif options.state == 1:
-        options.blitLevelSelec()
+        options.blitLevelSelect()
     elif options.state == 2:
-        options.blitControlSelec()
+        options.blitControlSelect()
     elif options.state == 3:
-        options.blitBackSelec()
+        options.blitBackSelect()
 
     pygame.display.flip()
 
@@ -141,12 +150,12 @@ def updateScreenOptions(settings, screen, sky, options):
 ###################################Ship Choose###################################
 
 
-def checkEventsShips(ships, sky):
+def checkEventsShips(ships: Ships, background: Background) -> None:
     """Verify events in ships canvas
 
     Args:
         ships (Ships): ships canvas
-        sky (Background): background canvas
+        background (Background): background canvas
     """
 
     for event in pygame.event.get():
@@ -166,35 +175,37 @@ def checkEventsShips(ships, sky):
                 ships.back = True
 
             if event.key in [pygame.K_RSHIFT, pygame.K_LSHIFT]:
-                sky.on = True
+                background.on = True
 
 
-def updateScreenShips(settings, screen, sky, ships):
+def updateScreenShips(
+    settings: Settings, screen: pygame.Surface, background: Background, ships: Ships
+) -> None:
     """Update ships canvas
 
     Args:
         settings (Settings): screen settings
         screen (pygame.Surface): game screen
-        sky (Background): background canvas
+        background (Background): background canvas
         ships (Ships): ships canvas
     """
 
     screen.fill(settings.back)
-    sky.blitBack()
+    background.blitBack()
     ships.blitBoxes()
-    ships.blitSelec()
+    ships.blitSelect()
     pygame.display.flip()
 
 
 ##################################Level Choose##################################
 
 
-def checkEventsLevel(level, sky):
+def checkEventsLevel(level: Level, background: Background) -> None:
     """Verify events in ships canvas
 
     Args:
         ships (Ships): ships canvas
-        sky (Background): background canvas
+        background (Background): background canvas
     """
 
     for event in pygame.event.get():
@@ -203,40 +214,42 @@ def checkEventsLevel(level, sky):
 
         elif event.type == pygame.KEYDOWN:
             if event.key in [pygame.K_UP, pygame.K_w]:
-                level.lel = (level.lel - 1) % 4
+                level.number = (level.number - 1) % 4
 
             if event.key in [pygame.K_DOWN, pygame.K_s]:
-                level.lel = (level.lel + 1) % 4
+                level.number = (level.number + 1) % 4
 
             if event.key in [pygame.K_RETURN, pygame.K_KP_ENTER]:
                 level.back = True
 
             if event.key in [pygame.K_RSHIFT, pygame.K_LSHIFT]:
-                sky.on = True
+                background.on = True
 
 
-def updateScreenLevel(settings, screen, sky, level):
+def updateScreenLevel(
+    settings: Settings, screen: pygame.Surface, background: Background, level: Level
+) -> None:
     """Update level canvas
 
     Args:
         settings (Settings): screen settings
         screen (pygame.Surface): game screen
-        sky (Background): background canvas
+        background (Background): background canvas
         level (Level): level canvas
     """
 
     screen.fill(settings.back)
-    sky.blitBack()
+    background.blitBack()
     level.blitLevels()
 
-    if level.lel == 0:
-        level.blitEasySelec()
-    elif level.lel == 1:
-        level.blitMediumSelec()
-    elif level.lel == 2:
-        level.blitHardSelec()
-    elif level.lel == 3:
-        level.blitInsaneSelec()
+    if level.number == 0:
+        level.blitEasySelect()
+    elif level.number == 1:
+        level.blitMediumSelect()
+    elif level.number == 2:
+        level.blitHardSelect()
+    elif level.number == 3:
+        level.blitInsaneSelect()
 
     pygame.display.flip()
 
@@ -244,12 +257,12 @@ def updateScreenLevel(settings, screen, sky, level):
 ####################################Controls####################################
 
 
-def checkEventsControls(controls, sky):
+def checkEventsControls(controls: Controls, background: Background) -> None:
     """Verify events in control canvas
 
     Args:
         constrols (Controls): controls canvas
-        sky (Background): background canvas
+        background (Background): background canvas
     """
 
     for event in pygame.event.get():
@@ -261,21 +274,26 @@ def checkEventsControls(controls, sky):
                 controls.back = True
 
             if event.key in [pygame.K_RSHIFT, pygame.K_LSHIFT]:
-                sky.on = True
+                background.on = True
 
 
-def updateScreenControls(settings, screen, sky, controls):
+def updateScreenControls(
+    settings: Settings,
+    screen: pygame.Surface,
+    background: Background,
+    controls: Controls,
+) -> None:
     """Update controls canvas
 
     Args:
         settings (Settings): screen settings
         screen (pygame.Surface): game screen
-        sky (Background): background canvas
+        background (Background): background canvas
         controls (Constrols): controls canvas
     """
 
     screen.fill(settings.back)
-    sky.blitBack()
+    background.blitBack()
     controls.blitControls()
     pygame.display.flip()
 
@@ -283,33 +301,39 @@ def updateScreenControls(settings, screen, sky, controls):
 #####################################Count#####################################
 
 
-def updateScreenCount(settings, screen, sky, count, number):
+def updateScreenCount(
+    settings: Settings,
+    screen: pygame.Surface,
+    background: Background,
+    count: Count,
+    number: int,
+) -> None:
     """Update count canvas
 
     Args:
         settings (Settings): screen settings
         screen (pygame.Surface): game screen
-        sky (Background): background canvas
+        background (Background): background canvas
         count (Count): count canvas
         number (int): count number
     """
 
     screen.fill(settings.back)
-    sky.blitBack()
-    count.blitNum(number)
+    background.blitBack()
+    count.blitNumber(number)
     pygame.display.flip()
 
 
 ######################################Game######################################
 
 
-def checkEventsLead(screen, ship, sky):
+def checkEventsLead(screen: pygame.Surface, ship: Ship, background: Background) -> None:
     """Verify events in lead canvas
 
     Args:
         screen (pygame.Surface): game screen
         ship (Ship): ship canvas
-        sky (Background): background canvas
+        background (Background): background canvas
     """
 
     for event in pygame.event.get():
@@ -317,19 +341,19 @@ def checkEventsLead(screen, ship, sky):
             sys.exit()
 
         elif event.type == pygame.KEYDOWN:
-            keydownEventLead(screen, event, ship, sky)
+            keydownEventLead(event, ship, background)
         elif event.type == pygame.KEYUP:
             keyupEventLead(event, ship)
 
 
-def keydownEventLead(screen, event, ship, sky):
+def keydownEventLead(event, ship: Ship, background: Background) -> None:
     """Verify keydown events in lead canvas
 
     Args:
         screen (pygame.Surface): game screen
         event (pygame.Event): event
         ship (Ship): ship canvas
-        sky (Background): background canvas
+        background (Background): background canvas
     """
 
     if event.key in [pygame.K_RIGHT, pygame.K_d]:
@@ -341,10 +365,10 @@ def keydownEventLead(screen, event, ship, sky):
         ship.bullet.moving = True
 
     if event.key in [pygame.K_RSHIFT, pygame.K_LSHIFT]:
-        sky.on = True
+        background.on = True
 
 
-def keyupEventLead(event, ship):
+def keyupEventLead(event, ship: Ship) -> None:
     """Verify keyup events in lead canvas
 
     Args:
@@ -358,26 +382,32 @@ def keyupEventLead(event, ship):
         ship.moving_left = False
 
 
-def updateScreenLead(settings, screen, sky, ship, enemy):
+def updateScreenLead(
+    settings: Settings,
+    screen: pygame.Surface,
+    background: Background,
+    ship: Ship,
+    enemy: Pawn | Knight | Bishop,
+) -> None:
     """Update lead canvas
 
     Args:
         settings (Settings): screen settings
         screen (pygame.Surface): game screen
-        sky (Background): background canvas
+        background (Background): background canvas
         ship (Ship): ship canvas
-        enemy (Pawn, Knight, Bishop): enemy canvas
+        enemy (Pawn | Knight | Bishop): enemy canvas
     """
 
     screen.fill(settings.back)
-    sky.blitBack()
+    background.blitBack()
     ship.bullet.blitme()
     ship.blitme()
     enemy.blitme()
     pygame.display.flip()
 
 
-def gameOver(defeat):
+def gameOver(defeat: bool) -> bool:
     """Verify defeat
 
     Args:
@@ -393,18 +423,24 @@ def gameOver(defeat):
         return False
 
 
-def updateEnd(settings, screen, sky, end, defeat):
+def updateEnd(
+    settings: Settings,
+    screen: pygame.Surface,
+    background: Background,
+    end: End,
+    defeat: bool,
+) -> None:
     """Update end canvas
 
     Args:
         settings (Settings): screen settings
         screen (pygame.Surface): game screen
-        sky (Background): background canvas
+        background (Background): background canvas
         end (End): end canvas
         defeat (bool): player defeat
     """
 
     screen.fill(settings.back)
-    sky.blitBack()
+    background.blitBack()
     end.blitEnd(defeat)
     pygame.display.flip()
