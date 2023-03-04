@@ -175,7 +175,7 @@ def run():
             steps = 0
 
             while True:
-                if steps % 100 == 0 and background.on:
+                if steps % 50 == 0 and background.on:
                     if settings.back[0] >= 1:
                         settings.back[0] -= 1
                         settings.back[1] -= 1
@@ -184,8 +184,8 @@ def run():
                 checkLeadEvents(ship, background)
 
                 ship.update()
-                enemy.move(steps)
-                ship.bullet.update(ship.rect.centerx, ship.rect.bottom)
+                enemy.move()
+                ship.bullet.update(ship.rect.centerx, ship.rect.bottom, ship.velocity)
 
                 updateLeadScreen(settings, screen, background, ship, enemy)
 
@@ -203,6 +203,8 @@ def run():
                     break
 
                 steps += 1
+
+                wait(settings.step)
 
             if gameOver(defeat):
                 break
