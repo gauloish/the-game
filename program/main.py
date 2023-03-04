@@ -202,7 +202,7 @@ def run():
 
                 steps += 1
 
-                # wait(settings.delay)
+                wait(2)
 
             if gameOver(defeat):
                 break
