@@ -309,11 +309,10 @@ def updateScreenCount(
 ######################################Game######################################
 
 
-def checkEventsLead(screen: Surface, ship: Ship, background: Background) -> None:
+def checkEventsLead(ship: Ship, background: Background) -> None:
     """Verify events in lead canvas
 
     Args:
-        screen (Surface): game screen
         ship (Ship): ship canvas
         background (Background): background canvas
     """
